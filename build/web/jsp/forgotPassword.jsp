@@ -10,11 +10,12 @@
     <body>
         <div class="container">
             <h2>Change Password</h2>
-            <form action="RegisterServlet" method="post">
+            <form action="ForgotPassword" method="post">
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="text" name="username" placeholder="User name" required>
-                <input type="newpassword" name="newpassword" placeholder="New Password" required>
-                <input type="repassword" name="repassword" placeholder="Re-Password" required>
+                <input type="password" name="newpassword" placeholder="New Password" required>
+                <input type="password" name="repassword" placeholder="Re-Password" required>
+                ${err}
                 <button type="submit">Change</button>
             </form>
         </div>

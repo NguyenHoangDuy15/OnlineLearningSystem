@@ -15,7 +15,8 @@
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="text" name="username" placeholder="User name" required>
                 <input type="password" name="password" placeholder="Password" required>
-                <input type="repassword" name="repassword" placeholder="Re-Password" required>
+                <input type="password" name="repassword" placeholder="Re-Password" required>
+                ${err}
                 <div id="g_id_onload"
                      data-client_id="YOUR_GOOGLE_CLIENT_ID"
                      data-context="signin"

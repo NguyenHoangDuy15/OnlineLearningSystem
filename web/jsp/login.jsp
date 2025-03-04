@@ -14,8 +14,12 @@
             <form action="LoginServlet" method="post">
                 <input type="text" name="username" placeholder="User name" required>
                 <input type="password" name="password" placeholder="Password" required>
-                <a href="/LearningOnlineSystem/jsp/forgotPassword.jsp">Forgot password</a>
+                <table>
+                    <tr><a href="ForgotPassword">Forgot password</a></tr>
+                    <tr><a href="RegisterServlet">Sign Up</a></tr>
+                </table>
                 <button type="submit">Login</button>
+                ${err}
             </form>
         </div>
     </body>

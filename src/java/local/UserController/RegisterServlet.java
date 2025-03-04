@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import util.MaHoa;
+import util.Validator;
 
 /**
  *
@@ -56,12 +57,12 @@ public class RegisterServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    User getuserById(List<User> list, String user) {
+    User getuserById(List<User> list, String user, String email) {
 
         for (User p : list) {
             System.out.println(user);
             System.out.println(p.getUserName());
-            if (p.getUserName().equals(user)) {
+            if (p.getUserName().equals(user) || p.getEmail().equals(email)) {
                 return p;
             }
         }
@@ -92,14 +93,38 @@ public class RegisterServlet extends HttpServlet {
         String fullname = request.getParameter("name");
         String mail = request.getParameter("email");
         UserDAO d = new UserDAO();
-        if (getuserById(d.getAll(), user) != null) {
-            request.setAttribute("err", "UserName Dublicate");
+        if (getuserById(d.getAll(), user, mail) != null) {
+            request.setAttribute("err", "UserName or Gmail Dublicate");
             request.setAttribute("username", user);
             request.setAttribute("password", pass);
             request.setAttribute("repassword", repass);
             request.setAttribute("name", fullname);
             request.setAttribute("email", mail);
-            request.getRequestDispatcher("register.jsp").forward(request, response);
+            request.getRequestDispatcher("RegisterServlet").forward(request, response);
+        } else if (!Validator.isValidUsername(user)) {
+            request.setAttribute("err", "Invalid username! Must be 5-20 characters, no spaces, not starting with a number.");
+            request.setAttribute("username", user);
+            request.setAttribute("password", pass);
+            request.setAttribute("repassword", repass);
+            request.setAttribute("name", fullname);
+            request.setAttribute("email", mail);
+            request.getRequestDispatcher("jsp/register.jsp").forward(request, response);
+        } else if (!Validator.isValidEmail(mail)) {
+            request.setAttribute("err", "Invalid email format!");
+            request.setAttribute("username", user);
+            request.setAttribute("password", pass);
+            request.setAttribute("repassword", repass);
+            request.setAttribute("name", fullname);
+            request.setAttribute("email", mail);
+            request.getRequestDispatcher("jsp/register.jsp").forward(request, response);
+        } else if (!Validator.isValidPassword(pass)) {
+            request.setAttribute("err", "Password must be at least 8 characters with 1 uppercase, 1 lowercase, 1 number, and 1 special character.");
+            request.setAttribute("username", user);
+            request.setAttribute("password", pass);
+            request.setAttribute("repassword", repass);
+            request.setAttribute("name", fullname);
+            request.setAttribute("email", mail);
+            request.getRequestDispatcher("jsp/register.jsp").forward(request, response);
         } else {
             if (pass.equals(repass)) {
                 pass = MaHoa.toSHA1(pass);

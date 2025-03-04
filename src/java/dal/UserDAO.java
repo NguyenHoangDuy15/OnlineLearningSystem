@@ -14,7 +14,7 @@ public class UserDAO extends DBContext {
         UserDAO dao = new UserDAO();
         MaHoa m = new MaHoa();
         System.out.println(m.toSHA1("theanh"));
-        System.out.println(dao.check("theanh",m.toSHA1("theanh")));
+        System.out.println(dao.check("theanh", m.toSHA1("theanh")));
         //dao.add("123", "123", "123", "123");
     }
 
@@ -80,6 +80,49 @@ public class UserDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, username);
             st.setString(2, password);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                User a = new User(rs.getInt("UserID"),
+                        rs.getString("FullName"),
+                        rs.getString("UserName"),
+                        rs.getString("Email"),
+                        rs.getString("Password"),
+                        rs.getInt("RoleID"));
+                return a;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public void changePass(String pass, int id) {
+        String sql = "UPDATE [dbo].[Users]\n"
+                + "   SET [Password] = ?\n"
+                + " WHERE [UserID] = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, pass);
+            st.setInt(2, id);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public User checkWithGmail(String username, String mail) {
+        String sql = "SELECT [UserID]\n"
+                + "      ,[FullName]\n"
+                + "      ,[UserName]\n"
+                + "      ,[Email]\n"
+                + "      ,[Password]\n"
+                + "      ,[RoleID]\n"
+                + "  FROM [dbo].[Users]\n"
+                + "  WHERE [UserName]= ? and [Email] = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, username);
+            st.setString(2, mail);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 User a = new User(rs.getInt("UserID"),

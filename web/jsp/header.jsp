@@ -65,7 +65,23 @@
                         </div>
                         <a href="contact.jsp" class="nav-item nav-link">Contact</a>
                     </div>
-                    <a href="RegisterServlet" class="btn btn-primary py-2 px-4 d-none d-lg-block">Login</a>
+                    <%
+    // Kiểm tra xem user đã đăng nhập hay chưa (giả sử thông tin user được lưu trong session với key "user")
+     Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
+    if (isLoggedIn!= null && isLoggedIn) {
+                    %>
+                    <!-- Nếu đã đăng nhập, hiển thị nút Logout -->
+                    <a href="LogoutServlet" class="btn btn-danger py-2 px-4 d-none d-lg-block">Logout</a>
+                    <a href="ChangePasswordServlet" class="btn btn-danger py-2 px-4 d-none d-lg-block">Change Password</a>
+                    <%
+                        } else {
+                    %>
+                    <!-- Nếu chưa đăng nhập, hiển thị nút Login -->
+                    <a href="LoginServlet" class="btn btn-primary py-2 px-4 d-none d-lg-block">Login</a>
+                    <%
+                        }
+                    %>
+
                 </div>
             </nav>
         </div>

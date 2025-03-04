@@ -10,9 +10,8 @@
     <body>
         <div class="container">
             <h2>Change Password</h2>
-            <form action="ForgotPassword" method="post">
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="text" name="username" placeholder="User name" required>
+            <form action="ChangePasswordServlet" method="post">
+                <input type="password" name="oldpassword" placeholder="Old Password" required>
                 <input type="password" name="newpassword" placeholder="New Password" required>
                 <input type="password" name="repassword" placeholder="Re-Password" required>
                 ${err}
