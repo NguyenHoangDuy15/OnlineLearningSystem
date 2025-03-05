@@ -51,19 +51,19 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
                     <div class="navbar-nav mx-auto py-0">
-                        <a href="index.jsp" class="nav-item nav-link active">Home</a>
-                        <a href="about.jsp" class="nav-item nav-link">About</a>
-                        <a href="course.jsp" class="nav-item nav-link">Courses</a>
+                        <a href="index" class="nav-item nav-link active">Home</a>
+                        <a href="about" class="nav-item nav-link">About</a>
+                        <a href="course" class="nav-item nav-link">Courses</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="detail.jsp" class="dropdown-item">Course Detail</a>
-                                <a href="feature.jsp" class="dropdown-item">Our Features</a>
-                                <a href="team.jsp" class="dropdown-item">Instructors</a>
-                                <a href="testimonial.jsp" class="dropdown-item">Testimonial</a>
+                                <a href="detail" class="dropdown-item">Course Detail</a>
+                                <a href="feature" class="dropdown-item">Our Features</a>
+                                <a href="team" class="dropdown-item">Instructors</a>
+                                <a href="testimonial" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
-                        <a href="contact.jsp" class="nav-item nav-link">Contact</a>
+                        <a href="contact" class="nav-item nav-link">Contact</a>
                     </div>
                     <%
     // Kiểm tra xem user đã đăng nhập hay chưa (giả sử thông tin user được lưu trong session với key "user")

@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Change Password</title>
-        <link href="../css/login.css" rel="stylesheet">
+        <link href="css/login.css" rel="stylesheet">
     </head>
     <body>
         <div class="container">

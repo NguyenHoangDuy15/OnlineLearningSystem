@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author Administrator
  */
-public class index extends HttpServlet {
+public class team extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -33,10 +33,10 @@ public class index extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet index</title>");  
+            out.println("<title>Servlet team</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet index at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet team at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -53,7 +53,7 @@ public class index extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-      request.getRequestDispatcher("jsp/index.jsp").forward(request, response);
+      request.getRequestDispatcher("jsp/team.jsp").forward(request, response);
     } 
 
     /** 

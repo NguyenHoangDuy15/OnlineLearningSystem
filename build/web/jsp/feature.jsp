@@ -16,7 +16,7 @@
         <meta content="Free HTML Templates" name="description">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
         <!-- Favicon -->
-        <link href="../img/favicon.ico" rel="icon">
+        <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -26,10 +26,10 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
         <!-- Libraries Stylesheet -->
-        <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
         <!-- Customized Bootstrap Stylesheet -->
-        <link href="../css/style.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
     </head>
 
     <body>
@@ -105,7 +105,7 @@
                     </div>
                     <div class="col-lg-5" style="min-height: 500px;">
                         <div class="position-relative h-100">
-                            <img class="position-absolute w-100 h-100" src="../img/feature.jpg" style="object-fit: cover;">
+                            <img class="position-absolute w-100 h-100" src="img/feature.jpg" style="object-fit: cover;">
                         </div>
                     </div>
                 </div>
@@ -122,13 +122,13 @@
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="../lib/easing/easing.min.js"></script>
-        <script src="../lib/waypoints/waypoints.min.js"></script>
-        <script src="../lib/counterup/counterup.min.js"></script>
-        <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
         <!-- Template Javascript -->
-        <script src="../js/main.js"></script>
+        <script src="js/main.js"></script>
     </body>
 
 </html>

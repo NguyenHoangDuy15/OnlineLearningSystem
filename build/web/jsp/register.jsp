@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Register</title>
         <script src="https://accounts.google.com/gsi/client" async defer></script>
-        <link href="../css/login.css" rel="stylesheet">
+        <link href="css/login.css" rel="stylesheet">
     </head>
     <body>
         <div class="container">

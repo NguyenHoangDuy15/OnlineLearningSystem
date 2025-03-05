@@ -16,7 +16,7 @@
         <meta content="Free HTML Templates" name="description">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
         <!-- Favicon -->
-        <link href="../img/favicon.ico" rel="icon">
+        <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -26,10 +26,10 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
         <!-- Libraries Stylesheet -->
-        <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
         <!-- Customized Bootstrap Stylesheet -->
-        <link href="../css/style.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
     </head>
 
     <body>
@@ -82,7 +82,7 @@
                                 <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
                                 <p>Sed et elitr ipsum labore dolor diam, ipsum duo vero sed sit est est ipsum eos clita est ipsum. Est nonumy tempor at kasd. Sed at dolor duo ut dolor, et justo erat dolor magna sed stet amet elitr duo lorem</p>
                                 <div class="d-flex flex-shrink-0 align-items-center mt-4">
-                                    <img class="img-fluid mr-4" src="../img/testimonial-2.jpg" alt="">
+                                    <img class="img-fluid mr-4" src="img/testimonial-2.jpg" alt="">
                                     <div>
                                         <h5>Student Name</h5>
                                         <span>Web Design</span>
@@ -93,7 +93,7 @@
                                 <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
                                 <p>Sed et elitr ipsum labore dolor diam, ipsum duo vero sed sit est est ipsum eos clita est ipsum. Est nonumy tempor at kasd. Sed at dolor duo ut dolor, et justo erat dolor magna sed stet amet elitr duo lorem</p>
                                 <div class="d-flex flex-shrink-0 align-items-center mt-4">
-                                    <img class="img-fluid mr-4" src="../img/testimonial-1.jpg" alt="">
+                                    <img class="img-fluid mr-4" src="img/testimonial-1.jpg" alt="">
                                     <div>
                                         <h5>Student Name</h5>
                                         <span>Web Design</span>
@@ -116,13 +116,13 @@
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="../lib/easing/easing.min.js"></script>
-        <script src="../lib/waypoints/waypoints.min.js"></script>
-        <script src="../lib/counterup/counterup.min.js"></script>
-        <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
         <!-- Template Javascript -->
-        <script src="../js/main.js"></script>
+        <script src="js/main.js"></script>
     </body>
 
 </html>

@@ -16,7 +16,7 @@
         <meta content="Free HTML Templates" name="description">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
         <!-- Favicon -->
-        <link href="../img/favicon.ico" rel="icon">
+        <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -26,10 +26,10 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
         <!-- Libraries Stylesheet -->
-        <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
         <!-- Customized Bootstrap Stylesheet -->
-        <link href="../css/style.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
     </head>
 
     <body>
@@ -75,7 +75,7 @@
                                 <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Course Detail</h6>
                                 <h1 class="display-4">Web design & development courses for beginners</h1>
                             </div>
-                            <img class="img-fluid rounded w-100 mb-4" src="../img/header.jpg" alt="Image">
+                            <img class="img-fluid rounded w-100 mb-4" src="img/header.jpg" alt="Image">
                             <p>Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt magna dolores aliquyam dolores dolore. Amet erat amet et magna</p>
 
                             <p>Sadipscing labore amet rebum est et justo gubergren. Et eirmod ipsum sit diam ut magna lorem.
@@ -102,7 +102,7 @@
                                 </div>
                             </a>
                             <a class="courses-list-item position-relative d-block overflow-hidden mb-2" href="detail.jsp">
-                                <img class="img-fluid" src="../img/courses-2.jpg" alt="">
+                                <img class="img-fluid" src="img/courses-2.jpg" alt="">
                                 <div class="courses-text">
                                     <h4 class="text-center text-white px-3">Web design & development courses for
                                         beginners</h4>
@@ -116,7 +116,7 @@
                                 </div>
                             </a>
                             <a class="courses-list-item position-relative d-block overflow-hidden mb-2" href="detail.jsp">
-                                <img class="img-fluid" src="../img/courses-3.jpg" alt="">
+                                <img class="img-fluid" src="img/courses-3.jpg" alt="">
                                 <div class="courses-text">
                                     <h4 class="text-center text-white px-3">Web design & development courses for
                                         beginners</h4>
@@ -194,7 +194,7 @@
                         <div class="mb-5">
                             <h2 class="mb-4">Recent Courses</h2>
                             <a class="d-flex align-items-center text-decoration-none mb-4" href="">
-                                <img class="img-fluid rounded" src="../img/courses-80x80.jpg" alt="">
+                                <img class="img-fluid rounded" src="img/courses-80x80.jpg" alt="">
                                 <div class="pl-3">
                                     <h6>Web design & development courses for beginners</h6>
                                     <div class="d-flex">
@@ -204,7 +204,7 @@
                                 </div>
                             </a>
                             <a class="d-flex align-items-center text-decoration-none mb-4" href="">
-                                <img class="img-fluid rounded" src="../img/courses-80x80.jpg" alt="">
+                                <img class="img-fluid rounded" src="img/courses-80x80.jpg" alt="">
                                 <div class="pl-3">
                                     <h6>Web design & development courses for beginners</h6>
                                     <div class="d-flex">
@@ -214,7 +214,7 @@
                                 </div>
                             </a>
                             <a class="d-flex align-items-center text-decoration-none mb-4" href="">
-                                <img class="img-fluid rounded" src="../img/courses-80x80.jpg" alt="">
+                                <img class="img-fluid rounded" src="img/courses-80x80.jpg" alt="">
                                 <div class="pl-3">
                                     <h6>Web design & development courses for beginners</h6>
                                     <div class="d-flex">
@@ -224,7 +224,7 @@
                                 </div>
                             </a>
                             <a class="d-flex align-items-center text-decoration-none" href="">
-                                <img class="img-fluid rounded" src="../img/courses-80x80.jpg" alt="">
+                                <img class="img-fluid rounded" src="img/courses-80x80.jpg" alt="">
                                 <div class="pl-3">
                                     <h6>Web design & development courses for beginners</h6>
                                     <div class="d-flex">
@@ -249,13 +249,13 @@
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="../lib/easing/easing.min.js"></script>
-        <script src="../lib/waypoints/waypoints.min.js"></script>
-        <script src="../lib/counterup/counterup.min.js"></script>
-        <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
         <!-- Template Javascript -->
-        <script src="../js/main.js"></script>
+        <script src="js/main.js"></script>
     </body>
 
 </html>

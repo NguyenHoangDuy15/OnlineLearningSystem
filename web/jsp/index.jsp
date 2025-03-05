@@ -11,7 +11,7 @@
         <meta content="Free HTML Templates" name="description">
 
         <!-- Favicon -->
-        <link href="../img/favicon.ico" rel="icon">
+        <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -21,10 +21,10 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
         <!-- Libraries Stylesheet -->
-        <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
         <!-- Customized Bootstrap Stylesheet -->
-        <link href="../css/style.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
     </head>
 
     <body>
@@ -62,7 +62,7 @@
                 <div class="row">
                     <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
                         <div class="position-relative h-100">
-                            <img class="position-absolute w-100 h-100" src="../img/about.jpg" style="object-fit: cover;">
+                            <img class="position-absolute w-100 h-100" src="img/about.jpg" style="object-fit: cover;">
                         </div>
                     </div>
                     <div class="col-lg-7">
@@ -144,7 +144,7 @@
                     </div>
                     <div class="col-lg-5" style="min-height: 500px;">
                         <div class="position-relative h-100">
-                            <img class="position-absolute w-100 h-100" src="../img/feature.jpg" style="object-fit: cover;">
+                            <img class="position-absolute w-100 h-100" src="img/feature.jpg" style="object-fit: cover;">
                         </div>
                     </div>
                 </div>
@@ -165,7 +165,7 @@
             </div>
             <div class="owl-carousel courses-carousel">
                 <div class="courses-item position-relative">
-                    <img class="img-fluid" src="../img/courses-1.jpg" alt="">
+                    <img class="img-fluid" src="img/courses-1.jpg" alt="">
                     <div class="courses-text">
                         <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
                         <div class="border-top w-100 mt-3">
@@ -180,7 +180,7 @@
                     </div>
                 </div>
                 <div class="courses-item position-relative">
-                    <img class="img-fluid" src="../img/courses-2.jpg" alt="">
+                    <img class="img-fluid" src="img/courses-2.jpg" alt="">
                     <div class="courses-text">
                         <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
                         <div class="border-top w-100 mt-3">
@@ -195,7 +195,7 @@
                     </div>
                 </div>
                 <div class="courses-item position-relative">
-                    <img class="img-fluid" src="../img/courses-3.jpg" alt="">
+                    <img class="img-fluid" src="img/courses-3.jpg" alt="">
                     <div class="courses-text">
                         <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
                         <div class="border-top w-100 mt-3">
@@ -210,7 +210,7 @@
                     </div>
                 </div>
                 <div class="courses-item position-relative">
-                    <img class="img-fluid" src="../img/courses-4.jpg" alt="">
+                    <img class="img-fluid" src="img/courses-4.jpg" alt="">
                     <div class="courses-text">
                         <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
                         <div class="border-top w-100 mt-3">
@@ -225,7 +225,7 @@
                     </div>
                 </div>
                 <div class="courses-item position-relative">
-                    <img class="img-fluid" src="../img/courses-5.jpg" alt="">
+                    <img class="img-fluid" src="img/courses-5.jpg" alt="">
                     <div class="courses-text">
                         <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
                         <div class="border-top w-100 mt-3">
@@ -240,7 +240,7 @@
                     </div>
                 </div>
                 <div class="courses-item position-relative">
-                    <img class="img-fluid" src="../img/courses-6.jpg" alt="">
+                    <img class="img-fluid" src="img/courses-6.jpg" alt="">
                     <div class="courses-text">
                         <h4 class="text-center text-white px-3">Web design & development courses for beginners</h4>
                         <div class="border-top w-100 mt-3">
@@ -304,7 +304,7 @@
                 </div>
                 <div class="owl-carousel team-carousel position-relative" style="padding: 0 30px;">
                     <div class="team-item">
-                        <img class="img-fluid w-100" src="../img/team-1.jpg" alt="">
+                        <img class="img-fluid w-100" src="img/team-1.jpg" alt="">
                         <div class="bg-light text-center p-4">
                             <h5 class="mb-3">Instructor Name</h5>
                             <p class="mb-2">Web Design & Development</p>
@@ -318,7 +318,7 @@
                         </div>
                     </div>
                     <div class="team-item">
-                        <img class="img-fluid w-100" src="../img/team-2.jpg" alt="">
+                        <img class="img-fluid w-100" src="img/team-2.jpg" alt="">
                         <div class="bg-light text-center p-4">
                             <h5 class="mb-3">Instructor Name</h5>
                             <p class="mb-2">Web Design & Development</p>
@@ -332,7 +332,7 @@
                         </div>
                     </div>
                     <div class="team-item">
-                        <img class="img-fluid w-100" src="../img/team-3.jpg" alt="">
+                        <img class="img-fluid w-100" src="img/team-3.jpg" alt="">
                         <div class="bg-light text-center p-4">
                             <h5 class="mb-3">Instructor Name</h5>
                             <p class="mb-2">Web Design & Development</p>
@@ -346,7 +346,7 @@
                         </div>
                     </div>
                     <div class="team-item">
-                        <img class="img-fluid w-100" src="../img/team-4.jpg" alt="">
+                        <img class="img-fluid w-100" src="img/team-4.jpg" alt="">
                         <div class="bg-light text-center p-4">
                             <h5 class="mb-3">Instructor Name</h5>
                             <p class="mb-2">Web Design & Development</p>
@@ -382,7 +382,7 @@
                                 <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
                                 <p>Sed et elitr ipsum labore dolor diam, ipsum duo vero sed sit est est ipsum eos clita est ipsum. Est nonumy tempor at kasd. Sed at dolor duo ut dolor, et justo erat dolor magna sed stet amet elitr duo lorem</p>
                                 <div class="d-flex flex-shrink-0 align-items-center mt-4">
-                                    <img class="img-fluid mr-4" src="../img/testimonial-2.jpg" alt="">
+                                    <img class="img-fluid mr-4" src="img/testimonial-2.jpg" alt="">
                                     <div>
                                         <h5>Student Name</h5>
                                         <span>Web Design</span>
@@ -393,7 +393,7 @@
                                 <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
                                 <p>Sed et elitr ipsum labore dolor diam, ipsum duo vero sed sit est est ipsum eos clita est ipsum. Est nonumy tempor at kasd. Sed at dolor duo ut dolor, et justo erat dolor magna sed stet amet elitr duo lorem</p>
                                 <div class="d-flex flex-shrink-0 align-items-center mt-4">
-                                    <img class="img-fluid mr-4" src="../img/testimonial-1.jpg" alt="">
+                                    <img class="img-fluid mr-4" src="img/testimonial-1.jpg" alt="">
                                     <div>
                                         <h5>Student Name</h5>
                                         <span>Web Design</span>
@@ -482,13 +482,13 @@
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="../lib/easing/easing.min.js"></script>
-        <script src="../lib/waypoints/waypoints.min.js"></script>
-        <script src="../lib/counterup/counterup.min.js"></script>
-        <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
         <!-- Template Javascript -->
-        <script src="../js/main.js"></script>
+        <script src="js/main.js"></script>
     </body>
 
 </html>
