@@ -10,6 +10,7 @@ CREATE TABLE Users (
 	UserName NVARCHAR(255) NOT NULL,
     Email NVARCHAR(255) UNIQUE NOT NULL,
     Password VARCHAR(1000) NOT NULL,
+	Status INT NOT NULL,
     RoleID INT FOREIGN KEY REFERENCES Roles(RoleID)
 );
 
@@ -139,11 +140,13 @@ INSERT INTO [dbo].[Users]
            ,[UserName]
            ,[Email]
            ,[Password]
+		   ,[Status]
            ,[RoleID])
      VALUES
            ('Admin123@'
            ,'Admin123@'
            ,'admin@gmail.com'
            ,'QWRtaW4xMjNAZndlcWZ3ZTtoZml1ZHNmYXNkZmFzZGZhcw=='
+		   ,1
            ,1)
 
