@@ -9,17 +9,19 @@ public class User {
     private String UserName;
     private String Email;
     private String Password;
+    private int Status;
     private int RoleID;
 
     public User() {
     }
 
-    public User(int UserID, String FullName, String UserName, String Email, String Password, int RoleID) {
+    public User(int UserID, String FullName, String UserName, String Email, String Password, int Status, int RoleID) {
         this.UserID = UserID;
         this.FullName = FullName;
         this.UserName = UserName;
         this.Email = Email;
         this.Password = Password;
+        this.Status = Status;
         this.RoleID = RoleID;
     }
 
@@ -63,6 +65,14 @@ public class User {
         this.Password = Password;
     }
 
+    public int getStatus() {
+        return Status;
+    }
+
+    public void setStatus(int Status) {
+        this.Status = Status;
+    }
+
     public int getRoleID() {
         return RoleID;
     }
@@ -73,7 +83,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "Users{" + "UserID=" + UserID + ", FullName=" + FullName + ", UserName=" + UserName + ", Email=" + Email + ", Password=" + Password + ", RoleID=" + RoleID + '}';
+        return "User{" + "UserID=" + UserID + ", FullName=" + FullName + ", UserName=" + UserName + ", Email=" + Email + ", Password=" + Password + ", Status=" + Status + ", RoleID=" + RoleID + '}';
     }
     
 }

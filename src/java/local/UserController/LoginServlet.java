@@ -77,7 +77,7 @@ public class LoginServlet extends HttpServlet {
         String pass = MaHoa.toSHA1(p);
         User a = d.check(u, pass);
         HttpSession sec = request.getSession();
-        if (a == null) {
+        if (a == null || a.getStatus() == 0) {
             //chua co
             sec.setAttribute("isLoggedIn", false);
             request.setAttribute("err", "Username or password invalid " + pass);

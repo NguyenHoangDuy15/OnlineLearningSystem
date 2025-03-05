@@ -24,12 +24,14 @@ public class UserDAO extends DBContext {
                 + "           ,[UserName]\n"
                 + "           ,[Email]\n"
                 + "           ,[Password]\n"
+                + "           ,[Status]\n"
                 + "           ,[RoleID])\n"
                 + "     VALUES\n"
                 + "           (?\n"
                 + "           ,?\n"
                 + "           ,?\n"
                 + "           ,?\n"
+                + "           ,1\n"
                 + "           ,4)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -50,6 +52,7 @@ public class UserDAO extends DBContext {
                 + "      ,[UserName]\n"
                 + "      ,[Email]\n"
                 + "      ,[Password]\n"
+                + "      ,[Status]\n"
                 + "      ,[RoleID]\n"
                 + "  FROM [dbo].[Users]";
         try {
@@ -58,7 +61,7 @@ public class UserDAO extends DBContext {
             while (rs.next()) {
                 User u = new User(rs.getInt("UserID"), rs.getString("FullName"),
                         rs.getString("UserName"), rs.getString("Email"),
-                        rs.getString("Password"), rs.getInt("RoleID"));
+                        rs.getString("Password"), rs.getInt("Status"), rs.getInt("RoleID"));
                 list.add(u);
             }
         } catch (SQLException e) {
@@ -73,6 +76,7 @@ public class UserDAO extends DBContext {
                 + "      ,[UserName]\n"
                 + "      ,[Email]\n"
                 + "      ,[Password]\n"
+                + "      ,[Status]\n"
                 + "      ,[RoleID]\n"
                 + "  FROM [dbo].[Users]\n"
                 + "  WHERE [UserName]= ? and [Password] = ?";
@@ -82,12 +86,9 @@ public class UserDAO extends DBContext {
             st.setString(2, password);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                User a = new User(rs.getInt("UserID"),
-                        rs.getString("FullName"),
-                        rs.getString("UserName"),
-                        rs.getString("Email"),
-                        rs.getString("Password"),
-                        rs.getInt("RoleID"));
+                User a = new User(rs.getInt("UserID"), rs.getString("FullName"),
+                        rs.getString("UserName"), rs.getString("Email"),
+                        rs.getString("Password"), rs.getInt("Status"), rs.getInt("RoleID"));
                 return a;
             }
         } catch (SQLException e) {
@@ -116,6 +117,7 @@ public class UserDAO extends DBContext {
                 + "      ,[UserName]\n"
                 + "      ,[Email]\n"
                 + "      ,[Password]\n"
+                + "      ,[Status]\n"
                 + "      ,[RoleID]\n"
                 + "  FROM [dbo].[Users]\n"
                 + "  WHERE [UserName]= ? and [Email] = ?";
@@ -125,12 +127,9 @@ public class UserDAO extends DBContext {
             st.setString(2, mail);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                User a = new User(rs.getInt("UserID"),
-                        rs.getString("FullName"),
-                        rs.getString("UserName"),
-                        rs.getString("Email"),
-                        rs.getString("Password"),
-                        rs.getInt("RoleID"));
+                User a = new User(rs.getInt("UserID"), rs.getString("FullName"),
+                        rs.getString("UserName"), rs.getString("Email"),
+                        rs.getString("Password"), rs.getInt("Status"), rs.getInt("RoleID"));
                 return a;
             }
         } catch (SQLException e) {
