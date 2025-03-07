@@ -25,10 +25,6 @@
         <servlet-class>local.UserController.team</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>testtimonial</servlet-name>
-        <servlet-class>local.UserController.testimonial</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>detail</servlet-name>
         <servlet-class>local.UserController.detail</servlet-class>
     </servlet>
@@ -43,6 +39,10 @@
     <servlet>
         <servlet-name>Feedback</servlet-name>
         <servlet-class>local.UserController.Feedbackcontroller</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Myenrollment</servlet-name>
+        <servlet-class>local.UserController.Myenrollment</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ForgotPassword</servlet-name>
@@ -77,10 +77,6 @@
         <url-pattern>/team</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>testtimonial</servlet-name>
-        <url-pattern>/testimonial</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>detail</servlet-name>
         <url-pattern>/detail</url-pattern>
     </servlet-mapping>
@@ -96,9 +92,6 @@
         <servlet-name>Feedback</servlet-name>
         <url-pattern>/Feedbackcontroller</url-pattern>
     </servlet-mapping>
-    <welcome-file-list>
-        <welcome-file>jsp/index.jsp</welcome-file>
-    </welcome-file-list>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>local.UserController.LoginServlet</servlet-class>
@@ -122,5 +115,9 @@
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Myenrollment</servlet-name>
+        <url-pattern>/myenrollment</url-pattern>
     </servlet-mapping>
 </web-app>

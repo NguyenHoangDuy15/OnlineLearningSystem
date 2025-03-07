@@ -10,18 +10,68 @@ public class Courses {
     
     int courseID;
     String name;
+    String expertName;
+    String image;
     String description;
-    float price; // Đổi từ double thành float
+    float price; 
+    double averageRating;
+    int totalReviews;
 
     public Courses() {
     }
 
-
+ public Courses(int courseID, String name, String expertName, float price, double averageRating, int totalReviews) {
+        this.courseID = courseID;
+        this.name = name;
+        this.expertName = expertName;
+        this.price = price;
+        this.averageRating = averageRating;
+        this.totalReviews = totalReviews;
+    }
     public Courses(int courseID, String name, String description, float price) {
         this.courseID = courseID;
         this.name = name;
         this.description = description;
         this.price = price;
+    }
+
+    public Courses(int courseID, String name, String image, String description) {
+        this.courseID = courseID;
+        this.name = name;
+        this.image = image;
+        this.description = description;
+    }
+
+    public String getExpertName() {
+        return expertName;
+    }
+
+    public void setExpertName(String expertName) {
+        this.expertName = expertName;
+    }
+
+    public double getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(double averageRating) {
+        this.averageRating = averageRating;
+    }
+
+    public int getTotalReviews() {
+        return totalReviews;
+    }
+
+    public void setTotalReviews(int totalReviews) {
+        this.totalReviews = totalReviews;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public int getUserid() {

@@ -4,6 +4,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+        <style>
+            .avatar {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+            .dropdown-menu {
+                min-width: 150px;
+            }
+        </style>
     </head>
     <body>
         <!-- Topbar Start -->
@@ -18,27 +30,16 @@
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
                     <div class="d-inline-flex align-items-center">
-                        <a class="text-white px-2" href="">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="text-white px-2" href="">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a class="text-white px-2" href="">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a class="text-white px-2" href="">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a class="text-white pl-2" href="">
-                            <i class="fab fa-youtube"></i>
-                        </a>
+                        <a class="text-white px-2" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="text-white px-2" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="text-white px-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                        <a class="text-white px-2" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="text-white pl-2" href=""><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Topbar End -->
-
 
         <!-- Navbar Start -->
         <div class="container-fluid p-0">
@@ -60,19 +61,27 @@
                                 <a href="detail" class="dropdown-item">Course Detail</a>
                                 <a href="feature" class="dropdown-item">Our Features</a>
                                 <a href="team" class="dropdown-item">Instructors</a>
-                                <a href="testimonial" class="dropdown-item">Testimonial</a>
+                                <a href="myenrollment" class="dropdown-item">My Enrollments</a>
                             </div>
                         </div>
                         <a href="contact" class="nav-item nav-link">Contact</a>
                     </div>
                     <%
-    // Kiểm tra xem user đã đăng nhập hay chưa (giả sử thông tin user được lưu trong session với key "user")
-     Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
-    if (isLoggedIn!= null && isLoggedIn) {
+                        Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
+                        if (isLoggedIn != null && isLoggedIn) {
                     %>
-                    <!-- Nếu đã đăng nhập, hiển thị nút Logout -->
-                    <a href="LogoutServlet" class="btn btn-danger py-2 px-4 d-none d-lg-block">Logout</a>
-                    <a href="ChangePasswordServlet" class="btn btn-danger py-2 px-4 d-none d-lg-block">Change Password</a>
+                    <!-- Nếu đã đăng nhập, hiển thị avatar dropdown -->
+                    <div class="dropdown">
+                        <img src="https://toquoc.mediacdn.vn/280518851207290880/2022/12/15/p0dnxrcv-16710704848821827978943.jpg" alt="Avatar" class="avatar" id="avatarDropdown" data-bs-toggle="dropdown">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="avatarDropdown">
+                            <li><a class="dropdown-item" href="ChangePasswordServlet">View profile</a></li>
+                              <li><a class="dropdown-item" href="myenrollment">View My Enrollments</a></li>
+                            <li><a class="dropdown-item" href="ChangePasswordServlet">Change Password</a></li>
+                         
+                            <li><a class="dropdown-item" href="LogoutServlet">View history of transaction</a></li>
+                            <li><a class="dropdown-item" href="LogoutServlet">Logout</a></li>
+                        </ul>
+                    </div>
                     <%
                         } else {
                     %>
@@ -81,10 +90,10 @@
                     <%
                         }
                     %>
-
                 </div>
             </nav>
         </div>
         <!-- Navbar End -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
