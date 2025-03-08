@@ -27,7 +27,7 @@
                             >
                             <div class="avatar-sm">
                                 <img
-                                    src="../assets/img/profile.jpg"
+                                    src="assets/img/profile.jpg"
                                     alt="..."
                                     class="avatar-img rounded-circle"
                                     />
@@ -36,7 +36,7 @@
                                 <span class="op-7">Hi,</span>
                                 <!-- Sidebar -->
                                 <span class="fw-bold">
-                                    ${sessionScope.user.name}
+                                    ${sessionScope.account.getFullName()}
                                 </span>
                             </span>
                         </a>
@@ -46,13 +46,13 @@
                                     <div class="user-box">
                                         <div class="avatar-lg">
                                             <img
-                                                src="../assets/img/profile.jpg"
+                                                src="assets/img/profile.jpg"
                                                 alt="image profile"
                                                 class="avatar-img rounded"
                                                 />
                                         </div>
                                         <div class="u-text">
-                                            <h4>${sessionScope.user.name}</h4>
+                                            <h4>${sessionScope.account.getFullName()}</h4>
                                             <p class="text-muted">${sessionScope.user.email}</p>
                                             <a
                                                 href="ViewProfileServlet?userId=${sessionScope.user.userID}"
@@ -65,9 +65,9 @@
                                 <li>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="ViewProfileServlet?userId=${sessionScope.user.userID}">My Profile</a>
-                                    <a class="dropdown-item" href="changePassword.jsp">Change Password</a>
+                                    <a class="dropdown-item" href="ChangePasswordServlet">Change Password</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="logout">Logout</a>
+                                    <a class="dropdown-item" href="LogoutServlet">Logout</a>
                                 </li>
                             </div>
                         </ul>

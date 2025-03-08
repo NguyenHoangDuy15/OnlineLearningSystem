@@ -3,20 +3,32 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package local.UserController;
+package local.AdminController;
 
+import Model.Blog;
+import Model.CustomerCourse;
+import Model.Feedback;
+import Model.Requests;
+import Model.User;
+import dal.BlogDAO;
+import dal.CustomerDao;
+import dal.FeedbackDao;
+import dal.RequestDAO;
+import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  *
- * @author Administrator
+ * @author DELL
  */
-public class testimonial extends HttpServlet {
+public class ShowAdminDasboardServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -33,10 +45,10 @@ public class testimonial extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet testtimonial</title>");  
+            out.println("<title>Servlet ShowAdminDasboardServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet testtimonial at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet ShowAdminDasboardServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -53,7 +65,30 @@ public class testimonial extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        request.getRequestDispatcher("jsp/testimonial.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        // GET ALL DAO
+        CustomerDao courseDAO = new CustomerDao();
+        UserDAO userDAO = new UserDAO();
+        BlogDAO blogDAO = new BlogDAO();
+        FeedbackDao feedbackDAO = new FeedbackDao();
+        RequestDAO requestDAO = new RequestDAO();
+        // Get all list
+        List<CustomerCourse> courses = courseDAO.getAllCourses();
+        List<Blog> blogs = blogDAO.getAllBlog();
+        List<User> experts = userDAO.getAllExpert();
+        List<User> sales = userDAO.getAllSale();
+        List<Feedback> feedbacks = feedbackDAO.getAllFeedback();
+        List<Requests> requests = requestDAO.getAllRequests();
+        List<User> users = userDAO.getAll();
+        // Luu Session
+        session.setAttribute("numberOfCourse", courses.size());
+        session.setAttribute("numberOfBlog", blogs.size());
+        session.setAttribute("numberOfExpert", experts.size());
+        session.setAttribute("numberOfSale", sales.size());
+        session.setAttribute("numberOfFeedback", feedbacks.size());
+        session.setAttribute("numberOfRequest", requests.size());
+        session.setAttribute("numberOfUsers", (users.size() - 1));
+        request.getRequestDispatcher("jsp/dashboard.jsp").forward(request, response);
     } 
 
     /** 
