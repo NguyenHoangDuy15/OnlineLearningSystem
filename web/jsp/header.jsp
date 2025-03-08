@@ -64,7 +64,15 @@
                                 <a href="/LearningOnlineSystem/testimonial" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
-                        <a href="contact" class="nav-item nav-link">Contact</a>
+                        <a href="ViewBlog" class="nav-item nav-link">Blog</a>
+                        <%
+                            Boolean isSale = (Boolean) session.getAttribute("isSale");
+                            if (isSale != null && isSale) {
+                        %>
+                        <a href="viewownerbloglist" class="nav-item nav-link">Manage Blogs </a>
+                        <%
+                            }
+                        %>
                     </div>
                     <%
                         Boolean isLoggedIn = (Boolean) session.getAttribute("isLoggedIn");
@@ -75,9 +83,9 @@
                         <img src="https://toquoc.mediacdn.vn/280518851207290880/2022/12/15/p0dnxrcv-16710704848821827978943.jpg" alt="Avatar" class="avatar" id="avatarDropdown" data-bs-toggle="dropdown">
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="avatarDropdown">
                             <li><a class="dropdown-item" href="ChangePasswordServlet">View profile</a></li>
-                              <li><a class="dropdown-item" href="myenrollment">View My Enrollments</a></li>
+                            <li><a class="dropdown-item" href="myenrollment">View My Enrollments</a></li>
                             <li><a class="dropdown-item" href="ChangePasswordServlet">Change Password</a></li>
-                         
+
                             <li><a class="dropdown-item" href="LogoutServlet">View history of transaction</a></li>
                             <li><a class="dropdown-item" href="LogoutServlet">Logout</a></li>
                         </ul>

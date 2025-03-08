@@ -76,6 +76,4 @@ public class Blog {
     public String toString() {
         return "Blog{" + "BlogID=" + BlogID + ", BlogTitle=" + BlogTitle + ", BlogDetail=" + BlogDetail + ", BlogImage=" + BlogImage + ", BlogDate=" + BlogDate + ", UserID=" + UserID + '}';
     }
-    
-            
 }
