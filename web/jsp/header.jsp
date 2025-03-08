@@ -16,7 +16,7 @@
                 min-width: 150px;
             }
         </style>
-    </head>
+    </head> 
     <body>
         <!-- Topbar Start -->
         <div class="container-fluid bg-dark">
