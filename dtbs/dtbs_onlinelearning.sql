@@ -240,6 +240,21 @@ INSERT INTO Category (CategoryName, Description) VALUES
 (N'JavaScript Programming', N'Build interactive web applications with JavaScript.')
 INSERT INTO Courses (Name, Description, Price, imageCources, UserID, CategoryID, CreatedAt) VALUES 
 -- Java Courses
+<<<<<<< HEAD
+(N'Java for Beginners', N'Learn Java fundamentals, syntax, and object-oriented programming.', 150,'https://s3-sgn09.fptcloud.com/codelearnstorage/Upload/Blog/lap-trinh-java-for-beginner-63739300179.8416.jpg', 2, 1, GETDATE()),
+(N'Advanced Java Development', N'Deep dive into Java frameworks, multithreading, and design patterns.', 180,'https://skilltechacademy.in/wp-content/uploads/2024/07/advanced-java-online-training-1024x585.jpeg' , 2, 1, GETDATE()),
+(N'Java Spring Boot Web Development', N'Build enterprise-level web applications with Spring Boot.', 200,'https://www.adm.ee/wordpress/wp-content/uploads/2023/12/Spring-768x512.png', 2, 1, GETDATE()),
+
+-- Python Courses
+(N'Python Basics', N'Learn the core syntax, data structures, and basic programming concepts in Python.', 120, 'https://miro.medium.com/v2/resize:fit:2000/1*Zipt5ex6sSVSkciwlJoG4Q.png', 2, 2, GETDATE()),
+(N'Data Science with Python', N'Master data analysis, visualization, and machine learning with Python.', 190, 'https://cdn.shopaccino.com/igmguru/products/data-science--with-python-igmguru_176161162_l.jpg?v=509', 2, 2, GETDATE()),
+(N'Python for Web Development', N'Build web applications using Django and Flask frameworks.', 170, 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220826185259/Why-to-Use-Python-for-Web-Development.jpg', 2, 2, GETDATE()),
+
+-- JavaScript Courses
+(N'JavaScript Essentials', N'Learn JavaScript basics, including variables, loops, and functions.', 110, 'https://img-c.udemycdn.com/course/750x422/1468694_d595_2.jpg', 2, 3, GETDATE()),
+(N'Frontend Development with JavaScript', N'Build interactive UI with JavaScript, HTML, and CSS.', 160, 'https://media.geeksforgeeks.org/wp-content/uploads/20240703165023/Frontend-Development-(1).webp', 2, 3, GETDATE()),
+(N'Backend Development with Node.js', N'Learn to create server-side applications using Node.js.', 200, 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220517005132/Why-to-Use-NodeJS-for-Backend-Development.jpg', 2, 3, GETDATE());
+=======
 (N'Java for Beginners', N'Learn Java fundamentals, syntax, and object-oriented programming.', 150,'https://s3-sgn09.fptcloud.com/codelearnstorage/Upload/Blog/lap-trinh-java-for-beginner-63739300179.8416.jpg', 1, 1, GETDATE()),
 (N'Advanced Java Development', N'Deep dive into Java frameworks, multithreading, and design patterns.', 180,'https://skilltechacademy.in/wp-content/uploads/2024/07/advanced-java-online-training-1024x585.jpeg' , 1, 1, GETDATE()),
 (N'Java Spring Boot Web Development', N'Build enterprise-level web applications with Spring Boot.', 200,'https://www.adm.ee/wordpress/wp-content/uploads/2023/12/Spring-768x512.png', 1, 1, GETDATE()),
@@ -253,6 +268,7 @@ INSERT INTO Courses (Name, Description, Price, imageCources, UserID, CategoryID,
 (N'JavaScript Essentials', N'Learn JavaScript basics, including variables, loops, and functions.', 110, 'https://img-c.udemycdn.com/course/750x422/1468694_d595_2.jpg', 1, 3, GETDATE()),
 (N'Frontend Development with JavaScript', N'Build interactive UI with JavaScript, HTML, and CSS.', 160, 'https://media.geeksforgeeks.org/wp-content/uploads/20240703165023/Frontend-Development-(1).webp', 1, 3, GETDATE()),
 (N'Backend Development with Node.js', N'Learn to create server-side applications using Node.js.', 200, 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220517005132/Why-to-Use-NodeJS-for-Backend-Development.jpg', 1, 3, GETDATE());
+>>>>>>> 100a10c54164adaf07d41d5416f9c1b604b61ec0
 INSERT INTO Lessons (Title, Content, CourseID, Status) VALUES 
 ('Java Programming for Beginner-Full-Course', 'https://www.youtube.com/watch?v=A74TOX803D0&t=3s', 1, 1),
 ('Advanced Java Programming A Comprehensive Full-Course', 'https://www.youtube.com/watch?v=I_qP7H3STMg', 1, 1),
@@ -885,5 +901,22 @@ INSERT INTO [dbo].[Enrollments]
            ,3
            ,1
            ,GETDATE())
+<<<<<<< HEAD
+		   select * from Users
+		   select * from Courses
+		SELECT 
+    c.CourseID, 
+    c.Name, 
+    u.FullName AS ExpertName, 
+    c.Price, 
+    COALESCE(AVG(f.Rating), 0) AS AverageRating, 
+    COUNT(f.Rating) AS TotalReviews 
+FROM Courses c
+JOIN Users u ON c.UserID = u.UserID
+LEFT JOIN Feedbacks f ON c.CourseID = f.CourseID
+WHERE c.CourseID = 1
+GROUP BY c.CourseID, c.Name, u.FullName, c.Price;
+=======
 
 
+>>>>>>> 100a10c54164adaf07d41d5416f9c1b604b61ec0

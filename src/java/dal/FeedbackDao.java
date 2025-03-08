@@ -3,41 +3,66 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dal;
+
 import java.sql.*;
 import Model.Feedback;
+import Model.User;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+public class FeedbackDao extends DBContext {
 
-public class FeedbackDao extends DBContext{
- 
     public boolean insertFeedback(Feedback feedback) {
-    String sql = "INSERT INTO Feedbacks (UserID, CourseID, Rating, Comment, CreatedAt) VALUES (?, ?, ?, ?, GETDATE())";
-    try {
-        PreparedStatement stmt = connection.prepareStatement(sql);
-        stmt.setInt(1, feedback.getUserId());
-        stmt.setInt(2, feedback.getCourseId());
-        stmt.setInt(3, feedback.getRating());
-        stmt.setString(4, feedback.getComment());
+        String sql = "INSERT INTO Feedbacks (UserID, CourseID, Rating, Comment, CreatedAt) VALUES (?, ?, ?, ?, GETDATE())";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, feedback.getUserId());
+            stmt.setInt(2, feedback.getCourseId());
+            stmt.setInt(3, feedback.getRating());
+            stmt.setString(4, feedback.getComment());
 
-        return stmt.executeUpdate() > 0;
-    } catch (SQLException e) {
-        e.printStackTrace();
-        return false;
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
-}
- public List<Feedback> getCustomerFeedbacks() {
+
+    public List<Feedback> getAllFeedback() {
         List<Feedback> list = new ArrayList<>();
-        String sql = "SELECT u.FullName AS CustomerName, c.Name AS CourseName, f.Comment AS Feedback " +
-                     "FROM Feedbacks f " +
-                     "JOIN Users u ON f.UserID = u.UserID " +
-                     "JOIN Courses c ON f.CourseID = c.CourseID " +
-                     "WHERE u.RoleID = 4"; // Chỉ lấy phản hồi từ khách hàng
+        String sql = "SELECT [FeedbackID]\n"
+                + "      ,[UserID]\n"
+                + "      ,[CourseID]\n"
+                + "      ,[Rating]\n"
+                + "      ,[Comment]\n"
+                + "      ,[CreatedAt]\n"
+                + "  FROM [dbo].[Feedbacks]";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Feedback f = new Feedback(rs.getInt("FeedbackID"), rs.getInt("UserID"), rs.getInt("Rating")
+                        ,rs.getString("Comment"), rs.getDate("CreatedAt"));
+                list.add(f);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public List<Feedback> getCustomerFeedbacks() {
+        List<Feedback> list = new ArrayList<>();
+        String sql = "SELECT u.FullName AS CustomerName, c.Name AS CourseName, f.Comment AS Feedback "
+                + "FROM Feedbacks f "
+                + "JOIN Users u ON f.UserID = u.UserID "
+                + "JOIN Courses c ON f.CourseID = c.CourseID "
+                + "WHERE u.RoleID = 4"; // Chỉ lấy phản hồi từ khách hàng
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery(); 
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Feedback(
                         rs.getString("CustomerName"),
@@ -51,7 +76,7 @@ public class FeedbackDao extends DBContext{
         return list;
     }
 
-  public static void main(String[] args) {
+    public static void main(String[] args) {
         // Tạo đối tượng DAL để gọi hàm
         FeedbackDao feedbackDAO = new FeedbackDao();
 
@@ -70,6 +95,5 @@ public class FeedbackDao extends DBContext{
                 System.out.println("----------------------");
             }
         }
-  }
+    }
 }
-    

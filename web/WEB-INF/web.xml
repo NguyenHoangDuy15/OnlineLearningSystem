@@ -44,6 +44,10 @@
         <servlet-name>Myenrollment</servlet-name>
         <servlet-class>local.UserController.Myenrollment</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowAdminDasboardServlet</servlet-name>
+        <servlet-class>local.AdminController.ShowAdminDasboardServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ForgotPassword</servlet-name>
         <url-pattern>/ForgotPassword</url-pattern>
@@ -119,5 +123,9 @@
     <servlet-mapping>
         <servlet-name>Myenrollment</servlet-name>
         <url-pattern>/myenrollment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowAdminDasboardServlet</servlet-name>
+        <url-pattern>/ShowAdminDasboardServlet</url-pattern>
     </servlet-mapping>
 </web-app>

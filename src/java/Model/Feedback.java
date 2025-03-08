@@ -12,6 +12,14 @@ public class Feedback {
     String customername;
     String course;
 
+    public Feedback(int userId, int courseId, int rating, String comment, Date createdAt) {
+        this.userId = userId;
+        this.courseId = courseId;
+        this.rating = rating;
+        this.comment = comment;
+        this.createdAt = createdAt;
+    }
+
     // Constructor mặc định
     public Feedback() {
     }

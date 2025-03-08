@@ -70,6 +70,60 @@ public class UserDAO extends DBContext {
         return list;
     }
 
+    public List<User> getAllExpert() {
+        List<User> list = new ArrayList<>();
+        String sql = "SELECT [UserID]\n"
+                + "      ,[FullName]\n"
+                + "      ,[UserName]\n"
+                + "      ,[Email]\n"
+                + "      ,[Password]\n"
+                + "      ,[Avartar]\n"
+                + "      ,[RoleID]\n"
+                + "      ,[Status]\n"
+                + "  FROM [dbo].[Users]\n"
+                + "  Where [RoleID] = 2";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                User u = new User(rs.getInt("UserID"), rs.getString("FullName"),
+                        rs.getString("UserName"), rs.getString("Email"),
+                        rs.getString("Password"), rs.getInt("Status"), rs.getInt("RoleID"));
+                list.add(u);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+    
+    public List<User> getAllSale() {
+        List<User> list = new ArrayList<>();
+        String sql = "SELECT [UserID]\n"
+                + "      ,[FullName]\n"
+                + "      ,[UserName]\n"
+                + "      ,[Email]\n"
+                + "      ,[Password]\n"
+                + "      ,[Avartar]\n"
+                + "      ,[RoleID]\n"
+                + "      ,[Status]\n"
+                + "  FROM [dbo].[Users]\n"
+                + "  Where [RoleID] = 3";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                User u = new User(rs.getInt("UserID"), rs.getString("FullName"),
+                        rs.getString("UserName"), rs.getString("Email"),
+                        rs.getString("Password"), rs.getInt("Status"), rs.getInt("RoleID"));
+                list.add(u);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
     public User check(String username, String password) {
         String sql = "SELECT [UserID]\n"
                 + "      ,[FullName]\n"

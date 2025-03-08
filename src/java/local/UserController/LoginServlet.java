@@ -81,9 +81,13 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
     User a = d.check(u, pass);
     HttpSession sec = request.getSession();
 
-    if (a == null || a.getStatus() == 0) {  // Hợp nhất logic từ cả hai nhánh
+    if (a == null ) {  // Hợp nhất logic từ cả hai nhánh
         sec.setAttribute("isLoggedIn", false);
         request.setAttribute("err", "Username or password invalid " + pass);
+        request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
+    } else if(a.getStatus() == 0){
+        sec.setAttribute("isLoggedIn", false);
+        request.setAttribute("err", "Your account was banned");
         request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
     } else {
         sec.setAttribute("account", a);
@@ -92,7 +96,12 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         sec.setAttribute("sessionID", sec.getId());
         sec.setAttribute("rollID", a.getRoleID()); // Thêm rollID vào session
         request.setAttribute("rollID", a.getRoleID());
-        response.sendRedirect("index");
+        if (a.getRoleID() == 1) {
+            response.sendRedirect("ShowAdminDasboardServlet");
+        } else{
+            response.sendRedirect("index");
+        }
+        
     }
 }
 
