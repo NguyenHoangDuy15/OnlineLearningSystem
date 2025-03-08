@@ -58,23 +58,18 @@
                             <div class="collapse" id="base">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="listUser">
+                                        <a href="ListOfExpertServlet">
                                             <span class="sub-item">List Expert</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="addUser">
+                                        <a href="ListOfSellerServlet">
                                             <span class="sub-item">List Seller</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="addUser">
-                                            <span class="sub-item">Add Expert</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="addUser">
-                                            <span class="sub-item">Add Seller</span>
+                                        <a href="AddNewUserServlet">
+                                            <span class="sub-item">Add Expert/Seller</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -89,7 +84,7 @@
                             <div class="collapse" id="maps">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="listRoomAdmin">
+                                        <a href="ListOfFeedbackByAdminServlet">
                                             <span class="sub-item">List Feedback</span>
                                         </a>
                                     </li>
