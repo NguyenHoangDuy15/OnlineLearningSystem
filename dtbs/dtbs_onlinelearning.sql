@@ -244,9 +244,18 @@ INSERT INTO Category (CategoryName, Description) VALUES
 (N'JavaScript Programming', N'Build interactive web applications with JavaScript.')
 INSERT INTO Courses (Name, Description, Price, imageCources, UserID, CategoryID, CreatedAt) VALUES 
 -- Java Courses
+
 (N'Java for Beginners', N'Java for Beginners is an ideal course for those new to Java programming. It covers fundamental concepts, including setting up the environment, variables, data types, loops, conditions, and object-oriented programming (OOP). You will learn how to create and use classes, objects, inheritance, polymorphism, and exception handling. The course also introduces Java Collections, database connectivity (JDBC), and web application development using JSP and Servlets. This is a valuable resource for building a strong foundation in Java and preparing for professional software development.', 150,'https://s3-sgn09.fptcloud.com/codelearnstorage/Upload/Blog/lap-trinh-java-for-beginner-63739300179.8416.jpg', 2, 1, GETDATE()),
 (N'Advanced Java Development', N'Advanced Java Development is designed for experienced Java programmers looking to deepen their skills. This course covers advanced topics such as multi-threading, concurrency, design patterns, and JVM internals. You will explore Java EE, including Servlets, JSP, Spring Framework, and RESTful APIs. Additionally, it introduces enterprise-level solutions like microservices, message queues, and security best practices. With hands-on projects and real-world scenarios, this course helps developers master Java for large-scale applications and professional software development.', 180,'https://skilltechacademy.in/wp-content/uploads/2024/07/advanced-java-online-training-1024x585.jpeg' , 2, 1, GETDATE()),
 (N'Java Spring Boot Web Development', N'Java Spring Boot Web Development is a comprehensive guide for building modern web applications using the Spring Boot framework. This course covers core Spring concepts such as dependency injection, MVC architecture, RESTful APIs, and database integration with JPA and Hibernate. You will also explore security mechanisms, authentication, and deployment strategies. With hands-on projects, you will learn how to create scalable, high-performance web applications while following industry best practices.', 200,'https://www.adm.ee/wordpress/wp-content/uploads/2023/12/Spring-768x512.png', 2, 1, GETDATE()),
+
+(N'Java for Beginners', N'Learn Java fundamentals, syntax, and object-oriented programming.', 150,'https://s3-sgn09.fptcloud.com/codelearnstorage/Upload/Blog/lap-trinh-java-for-beginner-63739300179.8416.jpg', 2, 1, GETDATE()),
+(N'Advanced Java Development', N'Deep dive into Java frameworks, multithreading, and design patterns.', 180,'https://skilltechacademy.in/wp-content/uploads/2024/07/advanced-java-online-training-1024x585.jpeg' , 2, 1, GETDATE()),
+(N'Java Spring Boot Web Development', N'Build enterprise-level web applications with Spring Boot.', 200,'https://www.adm.ee/wordpress/wp-content/uploads/2023/12/Spring-768x512.png', 2, 1, GETDATE()),
+
+(N'Java for Beginners', N'Learn Java fundamentals, syntax, and object-oriented programming.', 150,'https://s3-sgn09.fptcloud.com/codelearnstorage/Upload/Blog/lap-trinh-java-for-beginner-63739300179.8416.jpg', 1, 1, GETDATE()),
+(N'Advanced Java Development', N'Deep dive into Java frameworks, multithreading, and design patterns.', 180,'https://skilltechacademy.in/wp-content/uploads/2024/07/advanced-java-online-training-1024x585.jpeg' , 1, 1, GETDATE()),
+(N'Java Spring Boot Web Development', N'Build enterprise-level web applications with Spring Boot.', 200,'https://www.adm.ee/wordpress/wp-content/uploads/2023/12/Spring-768x512.png', 1, 1, GETDATE()),
 
 -- Python Courses
 (N'Python Basics', N'Python Basics is an introductory guide to the fundamental concepts of Python programming. It covers essential topics such as variables, data types, loops, functions, and object-oriented programming. This course provides a hands-on approach to learning Python with practical examples and exercises. Whether you are a beginner or transitioning from another language, Python Basics will equip you with the foundational skills needed to start coding and developing applications efficiently.', 120, 'https://miro.medium.com/v2/resize:fit:2000/1*Zipt5ex6sSVSkciwlJoG4Q.png', 2, 2, GETDATE()),
@@ -254,9 +263,16 @@ INSERT INTO Courses (Name, Description, Price, imageCources, UserID, CategoryID,
 (N'Python for Web Development', N'Build Web Applications using Django and Flask Frameworks is a comprehensive course designed to help learners create dynamic and scalable web applications using Python. The course covers the fundamentals of both Django and Flask, including routing, database integration, authentication, and REST API development. With hands-on projects and real-world examples, participants will gain practical experience in building modern web applications efficiently. Whether you are a beginner or an experienced developer, this course provides essential skills for mastering Python web development.', 170, 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220826185259/Why-to-Use-Python-for-Web-Development.jpg', 2, 2, GETDATE()),
 
 -- JavaScript Courses
+
 (N'JavaScript Essentials', N'JavaScript Essentials is a fundamental course designed for beginners and aspiring web developers. This course covers core JavaScript concepts, including variables, data types, functions, loops, and event handling. Learners will also explore the Document Object Model (DOM), asynchronous programming, and API interactions. Through hands-on exercises and real-world examples, students will gain practical coding experience to build interactive and dynamic web applications. Whether you are starting from scratch or looking to enhance your JavaScript skills, this course provides a strong foundation for modern web development.', 110, 'https://img-c.udemycdn.com/course/750x422/1468694_d595_2.jpg', 2, 3, GETDATE()),
 (N'Frontend Development with JavaScript', N'Frontend Development with JavaScript is a comprehensive course designed to equip learners with essential skills for building dynamic and interactive web applications. This course covers key JavaScript concepts, including DOM manipulation, event handling, asynchronous programming, and API integration. Students will also explore modern frontend frameworks like React or Vue.js to create responsive user interfaces. Through hands-on projects, participants will gain practical experience in developing real-world web applications. Whether you are a beginner or looking to enhance your frontend skills, this course provides the foundation needed to become a proficient JavaScript developer.', 160, 'https://media.geeksforgeeks.org/wp-content/uploads/20240703165023/Frontend-Development-(1).webp', 2, 3, GETDATE()),
-(N'Backend Development with Node.js', N'Backend Development with Node.js is a hands-on course designed to teach developers how to build scalable and efficient server-side applications. This course covers fundamental Node.js concepts, including event-driven programming, asynchronous operations, and working with modules. Students will also learn how to create RESTful APIs using Express.js, interact with databases like MongoDB and PostgreSQL, and implement authentication and authorization. With practical projects and real-world examples, this course provides the necessary skills to develop modern, high-performance backend applications using Node.js.', 200, 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220517005132/Why-to-Use-NodeJS-for-Backend-Development.jpg', 2, 3, GETDATE());
+(N'Backend Development with Node.js', N'Backend Development with Node.js is a hands-on course designed to teach developers how to build scalable and efficient server-side applications. This course covers fundamental Node.js concepts, including event-driven programming, asynchronous operations, and working with modules. Students will also learn how to create RESTful APIs using Express.js, interact with databases like MongoDB and PostgreSQL, and implement authentication and authorization. With practical projects and real-world examples, this course provides the necessary skills to develop modern, high-performance backend applications using Node.js.', 200, 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220517005132/Why-to-Use-NodeJS-for-Backend-Development.jpg', 2, 3, GETDATE()),
+
+(N'JavaScript Essentials', N'Learn JavaScript basics, including variables, loops, and functions.', 110, 'https://img-c.udemycdn.com/course/750x422/1468694_d595_2.jpg', 1, 3, GETDATE()),
+(N'Frontend Development with JavaScript', N'Build interactive UI with JavaScript, HTML, and CSS.', 160, 'https://media.geeksforgeeks.org/wp-content/uploads/20240703165023/Frontend-Development-(1).webp', 1, 3, GETDATE()),
+(N'Backend Development with Node.js', N'Learn to create server-side applications using Node.js.', 200, 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220517005132/Why-to-Use-NodeJS-for-Backend-Development.jpg', 1, 3, GETDATE());
+
+
 INSERT INTO Lessons (Title, Content, CourseID, Status) VALUES 
 ('Java Programming for Beginner-Full-Course', 'https://www.youtube.com/watch?v=eIrMbAQSU34&t=2989s&ab_channel=ProgrammingwithMosh', 1, 1),
 ('Java 24 - Better Language, Better APIs, Better Runtime', 'https://www.youtube.com/watch?v=2NTyzL-9Bfo', 1, 1),
@@ -366,7 +382,37 @@ INSERT INTO [dbo].[Requests]
            (3
            ,6)
 
-INSERT INTO Answer( IsCorrectAnswer, AnswerContent) values (1, 'B'),  (0, 'A'), (0,'C'), (0,'D), (1, 'A'), (0, 'B'), (0,'C), (0, 'D'), (1, 'C'), (0,'A'), (0, 'B'), (0, 'D'), (1,'A'), (0, 'B'), (0, 'C'), (0,'D'), (1, 'B'), (0, 'A'), (0,'C'), (0, 'D. Inside a package'), (1, 'D. All of the above'), (0,'A. A variable cannot be changed'),  (0, 'B. A method cannot be overridden'), (0,'C. A class cannot be inherited'), (1,'C. Abstract methods'), (0, 'A. Methods with a body'), (0, 'B. Mutable variables'), (0,'D. Constructor'), (1, 'A. java.util'), (0, 'B. java.lang'), (0,'C. java.io'), (0, 'D. java.sql'), (1, 'B. get(int index)'), (0,'A. fetch(int index)'), (0, 'C. retrieve(int index)'), (0, 'D. find(int index)'), (1,'C. new'), (0, 'A. create'), (0, 'B. build'), (0,'D. instance'), (1, 'B. false'), (0, 'A. true'), (0,'C. null'), (0,'D. 0'), (1,'B. Compare the contents of two objects'), (0,'A. Compare memory addresses of two objects'), (0, 'C. Copy an object'), (0, 'D. Compare two integers'), (1,'A. (Dog) animal;'), (0, 'B. (int) 3.5'), (0, 'C. Integer.parseInt("123")'), (0,'D. String.valueOf(123);'), (1, 'A. FileReader'), (0, 'B. FileScanner'), (0,'C. FileWriter'), (0, 'D. FileOutputStream'), (1, 'A. Exception handling'), (0,'B. Defining loops'), (0, 'C. Ending a program'), (0, 'D. Initializing variables'), (1,'B. Throw an exception'), (0, 'A. Declare an exception'), (0, 'C. Handle an exception'), (0,'D. Catch an exception'), (1,'B. An interface'), (0,'A. A class'), (0, 'C. A package'), (0, 'D. An annotation'), (1,'A. Call the constructor of the parent class'), (0, 'B. Call a static method'), (0, 'C. Access a private method'), (0,'D. Access a global variable'), (1, 'A. == compares memory addresses, equals() compares content'), (0, 'B. Both compare memory addresses'), (0,'C. == compares content, equals() compares memory addresses'), (0, 'D. No difference'), (1, 'C. break'), (0,'B. continue'), (0, 'A. stop'), (0, 'D. exit'), (1,'D. PrintStream'), (0, 'A. System'), (0, 'B. Console'), (0,'C. OutputStream'), (1,'B. A floating-point number in the range [0,1)'), (0, 'A. An integer'), (0, 'C. A floating-point number in the range (0,1]'), (0,'D. An integer in the range [0,10]'), (1,'B. 32 bits'), (0, 'A. 16 bits'), (0, 'C. 64 bits'), (0,'D. 8 bits'), (1,'C. final'), (0, 'A. static'), (0, 'B. private'), (0,'D. protected'), (1,'B. It will compile but not run'), (0, 'A. It will compile and run'), (0, ' C. It will not compile'), (0,'D. It will throw an exception'), (1,'B. constructor'), (0, 'A. finalize()'), (0, 'D. run()'), (0,'C. start()'), (1,'D. default (no modifier)'), (0, 'A. public'), (0, 'B. private'), (0,'C. protected'), (1,'A. Object'), (0, 'B. Class'), (0, 'C. Super'), (0,'D. Base'), (1,'A. Throws ArithmeticException'), (0, 'B. Returns Infinity'), (0, 'C. Returns NaN'), (0,'D. Returns 0'), (1,'B. super'), (0, 'A. this'), (0, 'C. extends'), (0,'D. parent') 
+INSERT INTO Answer (IsCorrectAnswer, AnswerContent) VALUES 
+(1, 'B'), (0, 'A'), (0, 'C'), (0, 'D'), 
+(1, 'A'), (0, 'B'), (0, 'C'), (0, 'D'), 
+(1, 'C'), (0, 'A'), (0, 'B'), (0, 'D'), 
+(1, 'A'), (0, 'B'), (0, 'C'), (0, 'D'), 
+(1, 'B'), (0, 'A'), (0, 'C'), (0, 'D'), 
+(1, 'D'), (0, 'A'), (0, 'B'), (0, 'C'), 
+(1, 'C'), (0, 'A'), (0, 'B'), (0, 'D'), 
+(1, 'A'), (0, 'B'), (0, 'C'), (0, 'D'), 
+(1, 'B'), (0, 'A'), (0, 'C'), (0, 'D'), 
+(1, 'C'), (0, 'A'), (0, 'B'), (0, 'D'), 
+(1, 'A'), (0, 'B'), (0, 'C'), (0, 'D'), 
+(1, 'B'), (0, 'A'), (0, 'C'), (0, 'D'), 
+(1, 'C'), (0, 'A'), (0, 'B'), (0, 'D'),
+(1, 'B'), (0, 'A'), (0, 'C'), (0, 'D'), 
+(1, 'B'), (0, 'A'), (0, 'C'), (0, 'D'),  
+(1, 'A'), (0, 'B'), (0, 'C'), (0, 'D'),
+(1, 'A'), (0, 'B'), (0, 'C'), (0, 'D'), 
+(1, 'A'), (0, 'B'), (0, 'C'), (0, 'D'), 
+(1, 'B'), (0, 'A'), (0, 'C'), (0, 'D'),
+(1, 'B'), (0, 'A'), (0, 'C'), (0, 'D'),
+(1, 'A'), (0, 'B'), (0, 'C'), (0, 'D'),
+(1, 'A'), (0, 'B'), (0, 'C'), (0, 'D'),
+(1, 'C'), (0, 'B'), (0, 'A'), (0, 'D'),    
+(1, 'D'), (0, 'A'), (0, 'B'), (0, 'C'), 
+(1, 'B'), (0, 'A'), (0, 'C'), (0, 'D'),
+(1, 'B'), (0, 'A'), (0, 'D'), (0, 'C'),
+(1, 'D'), (0, 'A'), (0, 'B'), (0, 'C'),
+(1, 'A'), (0, 'B'), (0, 'C'), (0, 'D'),
+(1, 'A'), (0, 'B'), (0, 'C'), (0, 'D'),
+(1, 'B'), (0, 'A'), (0, 'C'), (0, 'D');
 
 
 INSERT INTO Question(QuestionType, QuestionContent, OptionA, OptionB, OptionC, OptionD, AnswerID) 
@@ -630,4 +676,31 @@ INSERT INTO [dbo].[Enrollments]
            (6
            ,2
            ,1
+
            ,GETDATE());
+
+INSERT INTO [dbo].[Enrollments]
+           ([UserID]
+           ,[CourseID]
+           ,[Status]
+           ,[EnrolledAt])
+     VALUES
+           (6
+           ,3
+           ,1
+           ,GETDATE())
+
+		   select * from Users
+		   select * from Courses
+		SELECT 
+    c.CourseID, 
+    c.Name, 
+    u.FullName AS ExpertName, 
+    c.Price, 
+    COALESCE(AVG(f.Rating), 0) AS AverageRating, 
+    COUNT(f.Rating) AS TotalReviews 
+FROM Courses c
+JOIN Users u ON c.UserID = u.UserID
+LEFT JOIN Feedbacks f ON c.CourseID = f.CourseID
+WHERE c.CourseID = 1
+GROUP BY c.CourseID, c.Name, u.FullName, c.Price;

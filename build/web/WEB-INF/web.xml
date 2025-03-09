@@ -1,32 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <!-- User Controller Servlets -->
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>local.UserController.RegisterServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>index</servlet-name>
-        <servlet-class>local.UserController.index</servlet-class>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>local.UserController.LoginServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>about</servlet-name>
-        <servlet-class>local.UserController.about</servlet-class>
+        <servlet-name>ForgotPassword</servlet-name>
+        <servlet-class>local.UserController.ForgotPassword</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>contact</servlet-name>
-        <servlet-class>local.UserController.contact</servlet-class>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>local.UserController.LogoutServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>course</servlet-name>
-        <servlet-class>local.UserController.course</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>detail</servlet-name>
-        <servlet-class>local.UserController.detail</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>category</servlet-name>
-        <servlet-class>local.UserController.category</servlet-class>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>local.UserController.ChangePasswordServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Feedback</servlet-name>
@@ -44,10 +37,76 @@
         <servlet-name>Lessons</servlet-name>
         <servlet-class>local.UserController.Lessonservlet</servlet-class>
     </servlet>
+    <!-- Admin Controller Servlets -->
     <servlet>
-        <servlet-name>Test</servlet-name>
-        <servlet-class>local.UserController.Test</servlet-class>
+        <servlet-name>ShowAdminDasboardServlet</servlet-name>
+        <servlet-class>local.AdminController.ShowAdminDasboardServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddNewUserServlet</servlet-name>
+        <servlet-class>local.AdminController.AddNewUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListOfExpertServlet</servlet-name>
+        <servlet-class>local.AdminController.ListOfExpertServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListOfSellerServlet</servlet-name>
+        <servlet-class>local.AdminController.ListOfSellerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListOfFeedbackByAdminServlet</servlet-name>
+        <servlet-class>local.AdminController.ListOfFeedbackByAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteUserByAdminServlet</servlet-name>
+        <servlet-class>local.AdminController.DeleteUserByAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchExpertByAdminServlet</servlet-name>
+        <servlet-class>local.AdminController.SearchExpertByAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchSellerByAdminServlet</servlet-name>
+        <servlet-class>local.AdminController.SearchSellerByAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListBlogByAdminServlet</servlet-name>
+        <servlet-class>local.AdminController.ListBlogByAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteBlogByAdminServlet</servlet-name>
+        <servlet-class>local.AdminController.DeleteBlogByAdminServlet</servlet-class>
+    </servlet>
+    <!-- Servlet Mappings -->
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <servlet-class>local.UserController.Index</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Detail</servlet-name>
+        <servlet-class>local.UserController.Detail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Course</servlet-name>
+        <servlet-class>local.UserController.Course</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Checkanswer</servlet-name>
+        <servlet-class>local.UserController.Checkanswer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TestAnswer</servlet-name>
+        <servlet-class>local.UserController.TestAnswer</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ForgotPassword</servlet-name>
         <url-pattern>/ForgotPassword</url-pattern>
@@ -59,58 +118,6 @@
     <servlet-mapping>
         <servlet-name>ChangePasswordServlet</servlet-name>
         <url-pattern>/ChangePasswordServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>index</servlet-name>
-        <url-pattern>/index</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>about</servlet-name>
-        <url-pattern>/about</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>contact</servlet-name>
-        <url-pattern>/contact</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>course</servlet-name>
-        <url-pattern>/course</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>detail</servlet-name>
-        <url-pattern>/detail</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>category</servlet-name>
-        <url-pattern>/category</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Feedback</servlet-name>
-        <url-pattern>/Feedbackcontroller</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>local.UserController.LoginServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ForgotPassword</servlet-name>
-        <servlet-class>local.UserController.ForgotPassword</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>local.UserController.LogoutServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ChangePasswordServlet</servlet-name>
-        <servlet-class>local.UserController.ChangePasswordServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/RegisterServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Myenrollment</servlet-name>
@@ -125,7 +132,47 @@
         <url-pattern>/Lessonservlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Test</servlet-name>
-        <url-pattern>/test</url-pattern>
+        <servlet-name>ShowAdminDasboardServlet</servlet-name>
+        <url-pattern>/ShowAdminDasboardServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNewUserServlet</servlet-name>
+        <url-pattern>/AddNewUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListOfExpertServlet</servlet-name>
+        <url-pattern>/ListOfExpertServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListOfSellerServlet</servlet-name>
+        <url-pattern>/ListOfSellerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListOfFeedbackByAdminServlet</servlet-name>
+        <url-pattern>/ListOfFeedbackByAdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteBlogByAdminServlet</servlet-name>
+        <url-pattern>/DeleteBlogByAdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Detail</servlet-name>
+        <url-pattern>/detail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Course</servlet-name>
+        <url-pattern>/course</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Checkanswer</servlet-name>
+        <url-pattern>/checkanswer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TestAnswer</servlet-name>
+        <url-pattern>/testAnswer</url-pattern>
     </servlet-mapping>
 </web-app>

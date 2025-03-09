@@ -43,4 +43,32 @@ public class TestDao extends DBContext{
         }
         return questions;
     }
+      public static void main(String[] args) {
+        // Test với ID bất kỳ
+        int testID = 1;  
+
+        // Khởi tạo TestDao
+        TestDao testDao = new TestDao();
+
+        // Gọi phương thức lấy danh sách câu hỏi
+        List<Test> questions = testDao.getQuestionsByTestID(testID);
+
+        // Kiểm tra dữ liệu có lấy được không
+        if (questions.isEmpty()) {
+            System.out.println("Không tìm thấy câu hỏi nào cho Test ID: " + testID);
+        } else {
+            System.out.println("Danh sách câu hỏi của Test ID " + testID + ":");
+            for (Test question : questions) {
+                System.out.println("ID: " + question.getQuestionID());
+                System.out.println("Loại: " + question.getQuestionType());
+                System.out.println("Nội dung: " + question.getQuestionContent());
+                System.out.println("A: " + question.getOptionA());
+                System.out.println("B: " + question.getOptionB());
+                System.out.println("C: " + question.getOptionC());
+                System.out.println("D: " + question.getOptionD());
+                System.out.println("Đáp án đúng: " + question.getAnswerID());
+                System.out.println("------------------------------");
+            }
+        }
+    }
 }

@@ -50,7 +50,7 @@
             document.getElementById("videoFrame").style.display = "none";
             document.getElementById("testContainer").innerHTML = `
                 <h3>Bài kiểm tra</h3>
-                <a href="test?testId=` + testId + `" class="btn btn-primary">Làm bài kiểm tra</a>
+                <a href="testAnswer?testId=` + testId + `" class="btn btn-primary">Làm bài kiểm tra</a>
             `;
             document.getElementById("testContainer").style.display = "block";
         }
@@ -102,7 +102,7 @@
                         <c:when test="${firstLesson.type == 'Test'}">
                             <div id="testContainer">
                                 <h3>${firstLesson.name}</h3>
-                                <a href="test?testId=${firstLesson.id}" class="btn btn-primary">Làm bài kiểm tra</a>
+                                <a href="testAnswer?testId=${firstLesson.id}" class="btn btn-primary">Làm bài kiểm tra</a>
                             </div>
                             <iframe id="videoFrame" style="display: none;"></iframe>
                         </c:when>

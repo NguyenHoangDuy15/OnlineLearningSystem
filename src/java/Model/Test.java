@@ -3,13 +3,13 @@ package Model;
 public class Test {
 
     private int questionID;
- String questionType;
-   String questionContent;
-  String optionA;
- String optionB;
+    String questionType;
+    String questionContent;
+    String optionA;
+    String optionB;
     String optionC;
-     String optionD;
-     int answerID;
+    String optionD;
+    int answerID;
 
     public Test(int questionID, String questionType, String questionContent,
             String optionA, String optionB, String optionC, String optionD, int answerID) {
@@ -92,5 +92,5 @@ public class Test {
     public String toString() {
         return "Question{" + "questionID=" + questionID + ", questionType=" + questionType + ", questionContent=" + questionContent + ", optionA=" + optionA + ", optionB=" + optionB + ", optionC=" + optionC + ", optionD=" + optionD + ", answerID=" + answerID + '}';
     }
-    
+
 }
