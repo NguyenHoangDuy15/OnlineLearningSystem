@@ -7,7 +7,7 @@
 <html>
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>List Expert</title><!--  page only for manager  -->
+        <title>List Feedback</title><!--  page only for manager  -->
         <meta
             content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
             name="viewport"
@@ -52,48 +52,12 @@
                 <div class="container">
                     <div class="page-inner">
                         <div class="page-header">
-                            <h3 class="fw-bold mb-3">Manage Seller</h3>
+                            <h3 class="fw-bold mb-3">View Feedback</h3>
                         </div>
 
                         <div class="col-md-12">
                             <div class="card">
-                                <div class="card-header">
-                                    <div class="d-flex align-items-center">
-                                        <nav
-                                            class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
-                                            >
-                                            <%--<c:set value="${requestScope.searchName} " var="n"/>--%>
-                                            <c:set value="${fn:trim(requestScope.searchName)}" var="n"/>
-                                            <form action="searchUser">
-                                                <div class="input-group" >
-                                                    <div class="input-group-prepend">
-                                                        <button type="submit" class="btn btn-search pe-1">
-                                                            <i class="fa fa-search search-icon"></i>
-                                                        </button>
-                                                    </div>
-                                                    <c:if test="${fn:length(n) < 2}">
-                                                        <input
-                                                            type="text"
-                                                            name="name"
-                                                            placeholder="Search by name..."
-                                                            class="form-control"
-                                                            />
-                                                    </c:if>
-                                                    <c:if test="${fn:length(n) > 1}">
-                                                        <input
-                                                            type="text"
-                                                            name="name"
-                                                            value="${n}"
-                                                            placeholder="Search by name..."
-                                                            class="form-control"
-                                                            />
-                                                    </c:if>
-                                                </div>
-                                            </form>
-                                        </nav>
-                                        <c:set value="${requestScope.noti}" var="noti" />
-                                    </div>
-                                </div>
+                                
                                 <div class="card-body">
                                     <!-- Modal -->
 

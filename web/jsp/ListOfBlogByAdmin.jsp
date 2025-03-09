@@ -7,7 +7,7 @@
 <html>
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>List Feedback</title><!--  page only for manager  -->
+        <title>List Blog</title><!--  page only for manager  -->
         <meta
             content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
             name="viewport"
@@ -52,12 +52,13 @@
                 <div class="container">
                     <div class="page-inner">
                         <div class="page-header">
-                            <h3 class="fw-bold mb-3">View Feedback</h3>
+                            <h3 class="fw-bold mb-3">Manage Blog</h3>
                         </div>
 
                         <div class="col-md-12">
                             <div class="card">
-                                
+
+
                                 <div class="card-body">
                                     <!-- Modal -->
 
@@ -66,29 +67,42 @@
                                         <table class="display table table-striped table-hover" >
                                             <thead>
                                                 <tr style="text-align: start">
-                                                    <th>FbID</th>
-                                                    <th>Username</th>
-                                                    <th>CourseName</th>
-                                                    <th>Rating</th>
-                                                    <th>Comment</th>
-                                                    <th>CreateAt</th>
+                                                    <th>BlogID</th>
+                                                    <th>Blog Title</th>
+                                                    <th>Blog Date</th>
+                                                    <th>UserID</th>
+                                                    <th>Created By</th>
+                                                    <th style="width: 10%; text-align: center">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <c:forEach items="${sessionScope.listFeedbackPrint}" var="s">
-                                                <tr>
-                                                    <td>${s.getFbID()}</td>
-                                                    <td>${s.getUsername()}</td>
-                                                    <td>${s.getCourseName()}</td>
-                                                    <td>${s.getRating()}</td>
-                                                    <td>${s.getComment()}</td>
-                                                    <td>${s.getCreateAt()}</td>
-                                                </tr>
-                                            </c:forEach>
-                                            <c:if test="${requestScope.noti != null}">
-                                                <tr >
-                                                    <td style="text-align: center; font-weight: bold" colspan="9"><p class="text-danger">${requestScope.noti}</p></td><!-- comment --></tr>
-                                            </c:if>
+                                                <c:forEach items="${sessionScope.listBlog}" var="s">
+                                                    <tr>
+                                                        <td>${s.getBlogID()}</td>
+                                                        <td>${s.getBlogTitle()}</td>
+                                                        <td>${s.getBlogDate()}</td>
+                                                        <td>${s.getUserID()}</td>
+                                                        <td>${s.getUserName()}</td>
+                                                        <td style="display: flex; justify-content: center;">
+                                                            <div class="form-button-action">
+                                                                <button
+                                                                    type="button"
+                                                                    title=""
+                                                                    class="btn btn-link btn-danger"
+                                                                    data-original-title="Remove"
+                                                                    onclick="doDelete(${s.getBlogID()})"
+                                                                    
+                                                                    >
+                                                                    <i class="fa fa-times"></i>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                                <c:if test="${requestScope.noti != null}">
+                                                    <tr >
+                                                        <td style="text-align: center; font-weight: bold" colspan="9"><p class="text-danger">${requestScope.noti}</p></td><!-- comment --></tr>
+                                                        </c:if>
                                             </tbody>
                                         </table>
                                     </div>
@@ -100,7 +114,7 @@
                                         <ul class="pagination pg-primary" style="display: flex; justify-content: flex-end;">
                                             <div style="width: 100px; align-content: end">${index} of ${Nopage} page</div>
                                             <li class="page-item ${index < 2 ? 'disabled' :'' } ">
-                                                <a class="page-link" href="listFeedbackPrint?index=${index-1}" aria-label="Previous">
+                                                <a class="page-link" href="listBlog?index=${index-1}" aria-label="Previous">
                                                     <span aria-hidden="true">&laquo;</span>
                                                     <span class="sr-only">Previous</span>
                                                 </a>
@@ -123,17 +137,17 @@
                                             <c:forEach var="p" begin="${startPage}" end="${endPage}">
                                                 <c:if test="${index == p}">
                                                     <li class="page-item active">
-                                                        <a class="page-link" href="listFeedbackPrint?index=${p}">${p}</a>
+                                                        <a class="page-link" href="listBlog?index=${p}">${p}</a>
                                                     </li>
                                                 </c:if>
                                                 <c:if test="${index != p}">
                                                     <li class="page-item">
-                                                        <a class="page-link" href="listFeedbackPrint?index=${p}">${p}</a>
+                                                        <a class="page-link" href="listBlog?index=${p}">${p}</a>
                                                     </li>
                                                 </c:if>
                                             </c:forEach>
                                             <li class="page-item ${index < Nopage ? '' :'disabled' }" >
-                                                <a class="page-link" href="listFeedbackPrint?index=${index+1}" aria-label="Next">
+                                                <a class="page-link" href="listBlog?index=${index+1}" aria-label="Next">
                                                     <span aria-hidden="true">&raquo;</span>
                                                     <span class="sr-only">Next</span>
                                                 </a>
@@ -167,9 +181,9 @@
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
     <script src="assets/js/setting-demo2.js"></script>
     <script>
-                                                                document.querySelector('.close').addEventListener('click', function () {
-                                                                    $('#addUserModal').modal('hide');
-                                                                });
+                                                                        document.querySelector('.close').addEventListener('click', function () {
+                                                                            $('#addUserModal').modal('hide');
+                                                                        });
     </script>
     <script>
         function doClose() {
@@ -195,10 +209,10 @@
         }
     </script>
     <script>
-        function doDelete(userid) {
-            var option = confirm("Are you sure to ban this user?");
+        function doDelete(blogid) {
+            var option = confirm("Are you sure to ban this Blog?");
             if (option === true) {
-                window.location = "deleteUser?userid=" + userid;
+                window.location = "DeleteBlogByAdminServlet?blogid=" + blogid;
             }
         }
     </script>

@@ -74,7 +74,7 @@ public class ShowAdminDasboardServlet extends HttpServlet {
         RequestDAO requestDAO = new RequestDAO();
         // Get all list
         List<CustomerCourse> courses = courseDAO.getAllCourses();
-        List<Blog> blogs = blogDAO.getAllBlog();
+        List<Blog> blogs = blogDAO.getAllBlogs();
         List<User> experts = userDAO.getAllExpert();
         List<User> sales = userDAO.getAllSale();
         List<Feedback> feedbacks = feedbackDAO.getAllFeedback();

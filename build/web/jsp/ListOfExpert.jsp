@@ -65,7 +65,7 @@
                                             >
                                             <%--<c:set value="${requestScope.searchName} " var="n"/>--%>
                                             <c:set value="${fn:trim(requestScope.searchName)}" var="n"/>
-                                            <form action="searchUser">
+                                            <form action="SearchExpertByAdminServlet">
                                                 <div class="input-group" >
                                                     <div class="input-group-prepend">
                                                         <button type="submit" class="btn btn-search pe-1">

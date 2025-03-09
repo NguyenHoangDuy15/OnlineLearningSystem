@@ -68,6 +68,22 @@
         <servlet-name>DeleteUserByAdminServlet</servlet-name>
         <servlet-class>local.AdminController.DeleteUserByAdminServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchExpertByAdminServlet</servlet-name>
+        <servlet-class>local.AdminController.SearchExpertByAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchSellerByAdminServlet</servlet-name>
+        <servlet-class>local.AdminController.SearchSellerByAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListBlogByAdminServlet</servlet-name>
+        <servlet-class>local.AdminController.ListBlogByAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteBlogByAdminServlet</servlet-name>
+        <servlet-class>local.AdminController.DeleteBlogByAdminServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ForgotPassword</servlet-name>
         <url-pattern>/ForgotPassword</url-pattern>
@@ -167,5 +183,21 @@
     <servlet-mapping>
         <servlet-name>DeleteUserByAdminServlet</servlet-name>
         <url-pattern>/DeleteUserByAdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchExpertByAdminServlet</servlet-name>
+        <url-pattern>/SearchExpertByAdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchSellerByAdminServlet</servlet-name>
+        <url-pattern>/SearchSellerByAdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListBlogByAdminServlet</servlet-name>
+        <url-pattern>/ListBlogByAdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteBlogByAdminServlet</servlet-name>
+        <url-pattern>/DeleteBlogByAdminServlet</url-pattern>
     </servlet-mapping>
 </web-app>

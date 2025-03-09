@@ -99,7 +99,7 @@ public class LoginServlet extends HttpServlet {
             if (a.getRoleID() == 1) {
                 response.sendRedirect("ShowAdminDasboardServlet");
             }
-            if (a.getRoleID() == 3) {
+            else if (a.getRoleID() == 3) {
                 response.sendRedirect("viewownerbloglist");
                 sec.setAttribute("isSale", true);
             } else {
