@@ -70,42 +70,43 @@ public class LoginServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   @Override
-protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-    request.setCharacterEncoding("UTF-8");
-    String u = request.getParameter("username");
-    String p = request.getParameter("password");
-    UserDAO d = new UserDAO();
-    String pass = MaHoa.toSHA1(p);
-    User a = d.check(u, pass);
-    HttpSession sec = request.getSession();
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        String u = request.getParameter("username");
+        String p = request.getParameter("password");
+        UserDAO d = new UserDAO();
+        String pass = MaHoa.toSHA1(p);
+        User a = d.check(u, pass);
+        HttpSession sec = request.getSession();
 
-    if (a == null ) {  // Hợp nhất logic từ cả hai nhánh
-        sec.setAttribute("isLoggedIn", false);
-        request.setAttribute("err", "Username or password invalid " + pass);
-        request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
-    } else if(a.getStatus() == 0){
-        sec.setAttribute("isLoggedIn", false);
-        request.setAttribute("err", "Your account was banned");
-        request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
-    } else {
-        sec.setAttribute("account", a);
-        sec.setAttribute("isLoggedIn", true);
-        sec.setAttribute("userid", a.getUserID());
-        sec.setAttribute("sessionID", sec.getId());
-        sec.setAttribute("rollID", a.getRoleID()); // Thêm rollID vào session
-        request.setAttribute("rollID", a.getRoleID());
-        if (a.getRoleID() == 1) {
-            response.sendRedirect("ShowAdminDasboardServlet");
-        } else{
-            response.sendRedirect("index");
+        if (a == null) {  // Hợp nhất logic từ cả hai nhánh
+            sec.setAttribute("isLoggedIn", false);
+            request.setAttribute("err", "Username or password invalid " + pass);
+            request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
+        } else if (a.getStatus() == 0) {
+            sec.setAttribute("isLoggedIn", false);
+            request.setAttribute("err", "Your account was banned");
+            request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
+        } else {
+            sec.setAttribute("account", a);
+            sec.setAttribute("isLoggedIn", true);
+            sec.setAttribute("userid", a.getUserID());
+            sec.setAttribute("sessionID", sec.getId());
+            sec.setAttribute("rollID", a.getRoleID()); // Thêm rollID vào session
+            request.setAttribute("rollID", a.getRoleID());
+            if (a.getRoleID() == 1) {
+                response.sendRedirect("ShowAdminDasboardServlet");
+            }
+            if (a.getRoleID() == 3) {
+                response.sendRedirect("viewownerbloglist");
+                sec.setAttribute("isSale", true);
+            } else {
+                response.sendRedirect("index");
+            }
+
         }
-        
     }
-}
-
-
-   
 
 }

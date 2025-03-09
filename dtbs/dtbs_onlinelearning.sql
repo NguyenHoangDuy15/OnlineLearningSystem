@@ -240,6 +240,9 @@ INSERT INTO Category (CategoryName, Description) VALUES
 (N'JavaScript Programming', N'Build interactive web applications with JavaScript.')
 INSERT INTO Courses (Name, Description, Price, imageCources, UserID, CategoryID, CreatedAt) VALUES 
 -- Java Courses
+(N'Java for Beginners', N'Learn Java fundamentals, syntax, and object-oriented programming.', 150,'https://s3-sgn09.fptcloud.com/codelearnstorage/Upload/Blog/lap-trinh-java-for-beginner-63739300179.8416.jpg', 2, 1, GETDATE()),
+(N'Advanced Java Development', N'Deep dive into Java frameworks, multithreading, and design patterns.', 180,'https://skilltechacademy.in/wp-content/uploads/2024/07/advanced-java-online-training-1024x585.jpeg' , 2, 1, GETDATE()),
+(N'Java Spring Boot Web Development', N'Build enterprise-level web applications with Spring Boot.', 200,'https://www.adm.ee/wordpress/wp-content/uploads/2023/12/Spring-768x512.png', 2, 1, GETDATE()),
 
 (N'Java for Beginners', N'Learn Java fundamentals, syntax, and object-oriented programming.', 150,'https://s3-sgn09.fptcloud.com/codelearnstorage/Upload/Blog/lap-trinh-java-for-beginner-63739300179.8416.jpg', 1, 1, GETDATE()),
 (N'Advanced Java Development', N'Deep dive into Java frameworks, multithreading, and design patterns.', 180,'https://skilltechacademy.in/wp-content/uploads/2024/07/advanced-java-online-training-1024x585.jpeg' , 1, 1, GETDATE()),

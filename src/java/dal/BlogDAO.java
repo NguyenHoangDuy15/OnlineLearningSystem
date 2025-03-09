@@ -14,7 +14,76 @@ import java.sql.SQLException;
 
 public class BlogDAO extends DBContext {
 
-    public List<Blog> getAllBlog() {
+    // 1.Create Blog
+    public void createBlog(String title, String detail, String image, int userID, int roleID) {
+        if (roleID != 3) {
+            System.out.println("Bạn không có quyền tạo blog.");
+            return;
+        }
+
+        String sql = "INSERT INTO [dbo].[Blogs]\n"
+                + "           ([BlogTitle]\n"
+                + "           ,[BlogDetail]\n"
+                + "           ,[BlogImage]\n"
+                + "           ,[BlogDate]\n"
+                + "           ,[UserID])\n"
+                + "     VALUES\n"
+                + "           (?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,GETDATE()\n"
+                + "           ,?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, title);
+            st.setString(2, detail);
+            st.setString(3, image);
+            st.setInt(4, userID);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 2.Delete Blog
+    public void deleteBlog(int blogID, int roleID) {
+        if (roleID != 1 && roleID != 3) {
+            System.out.println("Bạn không có quyền xóa blog.");
+            return;
+        }
+        String sql = "DELETE FROM Blogs WHERE BlogID = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, blogID);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 3.Edit Blog
+    public void editBlog(int blogID, String title, String detail, String image, int userID) {
+        String sql = "UPDATE [dbo].[Blogs]\n"
+                + "   SET [BlogTitle] = ?\n"
+                + "      ,[BlogDetail] = ?\n"
+                + "      ,[BlogImage] = ?\n"
+                + "      ,[BlogDate] = GETDATE()\n"
+                + " WHERE BlogID = ? AND UserID = ? ";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, title);
+            st.setString(2, detail);
+            st.setString(3, image);
+            st.setInt(4, blogID);
+            st.setInt(5, userID);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //4. Get All Blog
+    public List<Blog> getAllBlogs() {
         List<Blog> list = new ArrayList<>();
         String sql = "SELECT [BlogID]\n"
                 + "      ,[BlogTitle]\n"
@@ -22,14 +91,19 @@ public class BlogDAO extends DBContext {
                 + "      ,[BlogImage]\n"
                 + "      ,[BlogDate]\n"
                 + "      ,[UserID]\n"
-                + "  FROM [dbo].[Blogs]";
+                + "  FROM [dbo].[Blogs]"
+                + "  ORDER BY BlogDate DESC";
+
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Blog b = new Blog(rs.getInt("BlogID"), rs.getString("BlogTitle"),
-                        rs.getString("BlogDetail"), rs.getString("BlogImage"),
-                        rs.getDate("BlogDate"), rs.getInt("UserID"));
+                Blog b = new Blog(rs.getInt("BlogID"),
+                        rs.getString("BlogTitle"),
+                        rs.getString("BlogDetail"),
+                        rs.getString("BlogImage"),
+                        rs.getDate("BlogDate"),
+                        rs.getInt("UserID"));
                 list.add(b);
             }
         } catch (SQLException e) {
@@ -37,4 +111,137 @@ public class BlogDAO extends DBContext {
         }
         return list;
     }
+
+    //5.Get Blog by BlogID
+    public Blog getBlogByID(int blogID) {
+        String sql = "SELECT [BlogID]\n"
+                + "      ,[BlogTitle]\n"
+                + "      ,[BlogDetail]\n"
+                + "      ,[BlogImage]\n"
+                + "      ,[BlogDate]\n"
+                + "      ,[UserID]\n"
+                + "  FROM [dbo].[Blogs]"
+                + "  WHERE BlogID = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, blogID);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return new Blog(
+                        rs.getInt("BlogID"),
+                        rs.getString("BlogTitle"),
+                        rs.getString("BlogDetail"),
+                        rs.getString("BlogImage"),
+                        rs.getDate("BlogDate"),
+                        rs.getInt("UserID")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //6. Get Blog by Title 
+    public List<Blog> searchBlogs(String keyword) {
+        List<Blog> list = new ArrayList<>();
+        String sql = "SELECT * FROM Blogs WHERE BlogTitle LIKE ? ORDER BY BlogDate DESC";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + keyword + "%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Blog b = new Blog(
+                        rs.getInt("BlogID"),
+                        rs.getString("BlogTitle"),
+                        rs.getString("BlogDetail"),
+                        rs.getString("BlogImage"),
+                        rs.getDate("BlogDate"),
+                        rs.getInt("UserID")
+                );
+                list.add(b);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    // 7. View Blog By UserID (Only Sale)
+//    public List<Blog> getBlogsByUserID(int userID, int roleID) {
+//        List<Blog> list = new ArrayList<>();
+//        if (roleID != 3) {
+//            System.out.println("Bạn không có quyền xem blog này.");
+//            return list;
+//        }
+//
+//        String sql = "SELECT [BlogID]\n"
+//                + "      ,[BlogTitle]\n"
+//                + "      ,[BlogDetail]\n"
+//                + "      ,[BlogImage]\n"
+//                + "      ,[BlogDate]\n"
+//                + "      ,[UserID]\n"
+//                + "  FROM [dbo].[Blogs]"
+//                + "  WHERE UserID = ?" 
+//                + "ORDER BY BlogDate DESC";
+//
+//        try {
+//            PreparedStatement st = connection.prepareStatement(sql);
+//            st.setInt(1, userID);
+//            ResultSet rs = st.executeQuery();
+//            while (rs.next()) {
+//                Blog b = new Blog(
+//                        rs.getInt("BlogID"),
+//                        rs.getString("BlogTitle"),
+//                        rs.getString("BlogDetail"),
+//                        rs.getString("BlogImage"),
+//                        rs.getDate("BlogDate"),
+//                        rs.getInt("UserID")
+//                );
+//                list.add(b);
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return list;
+//    }
+    public List<Blog> getBlogsByUserID(int userID, int roleID) {
+        List<Blog> list = new ArrayList<>();
+        if (roleID != 3) {
+            System.out.println("Bạn không có quyền xem blog này.");
+            return list;
+        }
+
+        // Sửa lỗi thiếu dấu cách trước ORDER BY
+        String sql = "SELECT BlogID, BlogTitle, BlogDetail, BlogImage, BlogDate, UserID "
+                + "FROM Blogs WHERE UserID = ? ORDER BY BlogDate DESC";
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, userID);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Blog b = new Blog(
+                        rs.getInt("BlogID"),
+                        rs.getString("BlogTitle"),
+                        rs.getString("BlogDetail"),
+                        rs.getString("BlogImage"),
+                        rs.getDate("BlogDate"),
+                        rs.getInt("UserID")
+                );
+                list.add(b);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("SQL State: " + e.getSQLState());
+            System.out.println("Error Code: " + e.getErrorCode());
+        }
+        return list;
+    }
+
+    public static void main(String[] args) {
+        BlogDAO dao = new BlogDAO();
+        System.out.println(dao.getBlogsByUserID(4, 3).toString());
+    }
+
 }
