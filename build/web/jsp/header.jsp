@@ -65,9 +65,14 @@
                         <a href="ViewBlog" class="nav-item nav-link">Blog</a>
                         <%
                             Boolean isSale = (Boolean) session.getAttribute("isSale");
+
                             if (Boolean.TRUE.equals(isSale)) {
                         %>
-                        <a href="viewownerbloglist" class="nav-item nav-link">Manage Blogs</a>
+                        <%
+                                                   if (isSale != null && isSale) {
+                        %>
+                        <a href="viewownerbloglist" class="nav-item nav-link">Manage Blogs </a>
+
                         <%
                             }
                         %>
@@ -80,10 +85,18 @@
                     <div class="dropdown">
                         <img src="https://toquoc.mediacdn.vn/280518851207290880/2022/12/15/p0dnxrcv-16710704848821827978943.jpg" alt="Avatar" class="avatar" id="avatarDropdown" data-bs-toggle="dropdown">
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="avatarDropdown">
+
                             <li><a class="dropdown-item" href="ChangePasswordServlet">Profile</a></li>
                             <li><a class="dropdown-item" href="myenrollment">My Courses</a></li>
                             <li><a class="dropdown-item" href="ChangePasswordServlet">Change Password</a></li>
                             <li><a class="dropdown-item" href="historytransaction">Transaction History</a></li>
+
+                            <li><a class="dropdown-item" href="ChangePasswordServlet">View profile</a></li>
+
+
+
+
+
                             <li><a class="dropdown-item" href="LogoutServlet">Logout</a></li>
                         </ul>
                     </div>
@@ -99,7 +112,7 @@
             </nav>
         </div>
         <!-- Navbar End -->
-        
+
         <!-- Bootstrap Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
