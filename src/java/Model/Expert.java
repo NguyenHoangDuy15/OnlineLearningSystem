@@ -8,14 +8,17 @@ package Model;
  *
  * @author Administrator
  */
-public class Expert {
 
-    String username; // Tên giảng viên
-    String name;     // Tên khóa học
 
-    public Expert(String username, String name) {
+   public class Expert {
+     String username;
+    String courseName;
+    String avatar;
+
+    public Expert(String username, String courseName, String avatar) {
         this.username = username;
-        this.name = name;
+        this.courseName = courseName;
+        this.avatar = avatar;
     }
 
     public String getUsername() {
@@ -26,12 +29,27 @@ public class Expert {
         this.username = username;
     }
 
-    public String getName() {
-        return name;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+        @Override
+        public String toString() {
+            return "Expert{" + "username=" + username + ", courseName=" + courseName + ", avatar=" + avatar + '}';
+        }
+
+
 
 }

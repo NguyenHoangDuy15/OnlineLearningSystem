@@ -10,7 +10,7 @@ CREATE TABLE Users (
     UserName NVARCHAR(255) NOT NULL,
     Email NVARCHAR(255) UNIQUE NOT NULL,
     Password VARCHAR(1000) NOT NULL,
-    Avartar text,  -- Giữ lại cột Avartar từ nhánh `customer`
+    Avartar nvarchar(max),  -- Giữ lại cột Avartar từ nhánh `customer`
     RoleID INT FOREIGN KEY REFERENCES Roles(RoleID),
     Status TINYINT NOT NULL DEFAULT 1  -- Giữ lại kiểu dữ liệu TINYINT với DEFAULT 1 từ nhánh `customer`
 );
@@ -29,10 +29,11 @@ CREATE TABLE Courses (
     Name NVARCHAR(255) NOT NULL,
     Description TEXT,
     Price FLOAT,
-	imageCources text,
+	imageCources nvarchar(max),
     UserID INT FOREIGN KEY REFERENCES Users(UserID),
     CategoryID INT FOREIGN KEY REFERENCES Category(CategoryID),
-    CreatedAt DATE
+    CreatedAt DATE,
+	
 );
 
 CREATE TABLE Lessons (
@@ -47,7 +48,7 @@ CREATE TABLE Blogs (
     BlogID INT IDENTITY(1,1) PRIMARY KEY,
     BlogTitle NVARCHAR(255) NOT NULL,
     BlogDetail NVARCHAR(1000) NOT NULL,
-    BlogImage text,
+    BlogImage nvarchar(max),
     BlogDate DATE,
     UserID INT FOREIGN KEY REFERENCES Users(UserID)
 );
@@ -93,9 +94,12 @@ CREATE TABLE Question (
     QuestionID INT PRIMARY KEY IDENTITY(1,1),
     QuestionType NVARCHAR(255),
     QuestionContent NVARCHAR(255),
+	OptionA NVARCHAR(255),
+    OptionB NVARCHAR(255),
+    OptionC NVARCHAR(255),
+    OptionD NVARCHAR(255),
     AnswerID INT FOREIGN KEY REFERENCES Answer(AnswerID)
 );
-
 CREATE TABLE Test (
     TestID INT PRIMARY KEY  IDENTITY(1,1),
     Name VARCHAR(255),
@@ -240,29 +244,30 @@ INSERT INTO Category (CategoryName, Description) VALUES
 (N'JavaScript Programming', N'Build interactive web applications with JavaScript.')
 INSERT INTO Courses (Name, Description, Price, imageCources, UserID, CategoryID, CreatedAt) VALUES 
 -- Java Courses
-(N'Java for Beginners', N'Learn Java fundamentals, syntax, and object-oriented programming.', 150,'https://s3-sgn09.fptcloud.com/codelearnstorage/Upload/Blog/lap-trinh-java-for-beginner-63739300179.8416.jpg', 1, 1, GETDATE()),
-(N'Advanced Java Development', N'Deep dive into Java frameworks, multithreading, and design patterns.', 180,'https://skilltechacademy.in/wp-content/uploads/2024/07/advanced-java-online-training-1024x585.jpeg' , 1, 1, GETDATE()),
-(N'Java Spring Boot Web Development', N'Build enterprise-level web applications with Spring Boot.', 200,'https://www.adm.ee/wordpress/wp-content/uploads/2023/12/Spring-768x512.png', 1, 1, GETDATE()),
+(N'Java for Beginners', N'Java for Beginners is an ideal course for those new to Java programming. It covers fundamental concepts, including setting up the environment, variables, data types, loops, conditions, and object-oriented programming (OOP). You will learn how to create and use classes, objects, inheritance, polymorphism, and exception handling. The course also introduces Java Collections, database connectivity (JDBC), and web application development using JSP and Servlets. This is a valuable resource for building a strong foundation in Java and preparing for professional software development.', 150,'https://s3-sgn09.fptcloud.com/codelearnstorage/Upload/Blog/lap-trinh-java-for-beginner-63739300179.8416.jpg', 2, 1, GETDATE()),
+(N'Advanced Java Development', N'Advanced Java Development is designed for experienced Java programmers looking to deepen their skills. This course covers advanced topics such as multi-threading, concurrency, design patterns, and JVM internals. You will explore Java EE, including Servlets, JSP, Spring Framework, and RESTful APIs. Additionally, it introduces enterprise-level solutions like microservices, message queues, and security best practices. With hands-on projects and real-world scenarios, this course helps developers master Java for large-scale applications and professional software development.', 180,'https://skilltechacademy.in/wp-content/uploads/2024/07/advanced-java-online-training-1024x585.jpeg' , 2, 1, GETDATE()),
+(N'Java Spring Boot Web Development', N'Java Spring Boot Web Development is a comprehensive guide for building modern web applications using the Spring Boot framework. This course covers core Spring concepts such as dependency injection, MVC architecture, RESTful APIs, and database integration with JPA and Hibernate. You will also explore security mechanisms, authentication, and deployment strategies. With hands-on projects, you will learn how to create scalable, high-performance web applications while following industry best practices.', 200,'https://www.adm.ee/wordpress/wp-content/uploads/2023/12/Spring-768x512.png', 2, 1, GETDATE()),
 
 -- Python Courses
-(N'Python Basics', N'Learn the core syntax, data structures, and basic programming concepts in Python.', 120, 'https://miro.medium.com/v2/resize:fit:2000/1*Zipt5ex6sSVSkciwlJoG4Q.png', 1, 2, GETDATE()),
-(N'Data Science with Python', N'Master data analysis, visualization, and machine learning with Python.', 190, 'https://cdn.shopaccino.com/igmguru/products/data-science--with-python-igmguru_176161162_l.jpg?v=509', 1, 2, GETDATE()),
-(N'Python for Web Development', N'Build web applications using Django and Flask frameworks.', 170, 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220826185259/Why-to-Use-Python-for-Web-Development.jpg', 1, 2, GETDATE()),
+(N'Python Basics', N'Python Basics is an introductory guide to the fundamental concepts of Python programming. It covers essential topics such as variables, data types, loops, functions, and object-oriented programming. This course provides a hands-on approach to learning Python with practical examples and exercises. Whether you are a beginner or transitioning from another language, Python Basics will equip you with the foundational skills needed to start coding and developing applications efficiently.', 120, 'https://miro.medium.com/v2/resize:fit:2000/1*Zipt5ex6sSVSkciwlJoG4Q.png', 2, 2, GETDATE()),
+(N'Data Science with Python', N'Data Science with Python explores the power of Python for data analysis, visualization, and machine learning. This course covers essential libraries such as NumPy, Pandas, Matplotlib, and Scikit-learn, enabling learners to process, analyze, and interpret complex datasets. It includes practical examples and real-world applications to help build strong analytical skills. Whether you are a beginner or an experienced programmer, this course provides a solid foundation in data science using Python.', 190, 'https://cdn.shopaccino.com/igmguru/products/data-science--with-python-igmguru_176161162_l.jpg?v=509', 2, 2, GETDATE()),
+(N'Python for Web Development', N'Build Web Applications using Django and Flask Frameworks is a comprehensive course designed to help learners create dynamic and scalable web applications using Python. The course covers the fundamentals of both Django and Flask, including routing, database integration, authentication, and REST API development. With hands-on projects and real-world examples, participants will gain practical experience in building modern web applications efficiently. Whether you are a beginner or an experienced developer, this course provides essential skills for mastering Python web development.', 170, 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220826185259/Why-to-Use-Python-for-Web-Development.jpg', 2, 2, GETDATE()),
 
 -- JavaScript Courses
-(N'JavaScript Essentials', N'Learn JavaScript basics, including variables, loops, and functions.', 110, 'https://img-c.udemycdn.com/course/750x422/1468694_d595_2.jpg', 1, 3, GETDATE()),
-(N'Frontend Development with JavaScript', N'Build interactive UI with JavaScript, HTML, and CSS.', 160, 'https://media.geeksforgeeks.org/wp-content/uploads/20240703165023/Frontend-Development-(1).webp', 1, 3, GETDATE()),
-(N'Backend Development with Node.js', N'Learn to create server-side applications using Node.js.', 200, 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220517005132/Why-to-Use-NodeJS-for-Backend-Development.jpg', 1, 3, GETDATE());
+(N'JavaScript Essentials', N'JavaScript Essentials is a fundamental course designed for beginners and aspiring web developers. This course covers core JavaScript concepts, including variables, data types, functions, loops, and event handling. Learners will also explore the Document Object Model (DOM), asynchronous programming, and API interactions. Through hands-on exercises and real-world examples, students will gain practical coding experience to build interactive and dynamic web applications. Whether you are starting from scratch or looking to enhance your JavaScript skills, this course provides a strong foundation for modern web development.', 110, 'https://img-c.udemycdn.com/course/750x422/1468694_d595_2.jpg', 2, 3, GETDATE()),
+(N'Frontend Development with JavaScript', N'Frontend Development with JavaScript is a comprehensive course designed to equip learners with essential skills for building dynamic and interactive web applications. This course covers key JavaScript concepts, including DOM manipulation, event handling, asynchronous programming, and API integration. Students will also explore modern frontend frameworks like React or Vue.js to create responsive user interfaces. Through hands-on projects, participants will gain practical experience in developing real-world web applications. Whether you are a beginner or looking to enhance your frontend skills, this course provides the foundation needed to become a proficient JavaScript developer.', 160, 'https://media.geeksforgeeks.org/wp-content/uploads/20240703165023/Frontend-Development-(1).webp', 2, 3, GETDATE()),
+(N'Backend Development with Node.js', N'Backend Development with Node.js is a hands-on course designed to teach developers how to build scalable and efficient server-side applications. This course covers fundamental Node.js concepts, including event-driven programming, asynchronous operations, and working with modules. Students will also learn how to create RESTful APIs using Express.js, interact with databases like MongoDB and PostgreSQL, and implement authentication and authorization. With practical projects and real-world examples, this course provides the necessary skills to develop modern, high-performance backend applications using Node.js.', 200, 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220517005132/Why-to-Use-NodeJS-for-Backend-Development.jpg', 2, 3, GETDATE());
 INSERT INTO Lessons (Title, Content, CourseID, Status) VALUES 
-('Java Programming for Beginner-Full-Course', 'https://www.youtube.com/watch?v=A74TOX803D0&t=3s', 1, 1),
-('Advanced Java Programming A Comprehensive Full-Course', 'https://www.youtube.com/watch?v=I_qP7H3STMg', 1, 1),
-('Java Spring Boot Web Development-Full-Course', 'https://www.youtube.com/watch?v=I_qP7H3STMg', 1, 1),
-('Python Full Course for Beginners', 'https://www.youtube.com/watch?v=_uQrJ0TkZlc', 2, 1),
-('Data Science with Python-Full Course', 'https://www.youtube.com/watch?v=nHAPcZRg9VM', 2, 1),
-('Web Development with Python Tutorial – Flask & Dynamic Database-Driven Web Apps', 'https://www.youtube.com/watch?v=yBDHkveJUf4', 2, 1),
-('JavaScript Course for Beginners 2024', 'https://www.youtube.com/watch?v=Zi-Q0t4gMC8', 3, 1),
-('Frontend Web Development Bootcamp Course (JavaScript, HTML, CSS)', 'https://www.youtube.com/watch?v=zJSY8tbf_ys', 3, 1),
-('Node.js and Express.js - Full Course', 'https://www.youtube.com/watch?v=Oe421EPjeBE', 3, 1)
+('Java Programming for Beginner-Full-Course', 'https://www.youtube.com/watch?v=eIrMbAQSU34&t=2989s&ab_channel=ProgrammingwithMosh', 1, 1),
+('Java 24 - Better Language, Better APIs, Better Runtime', 'https://www.youtube.com/watch?v=2NTyzL-9Bfo', 1, 1),
+('Advanced Java Programming A Comprehensive Full-Course', 'https://www.youtube.com/watch?v=I_qP7H3STMg', 2, 1),
+('Java Spring Boot Web Development-Full-Course', 'https://www.youtube.com/watch?v=I_qP7H3STMg', 3, 1),
+('Python Full Course for Beginners', 'https://www.youtube.com/watch?v=_uQrJ0TkZlc', 4, 1),
+('Data Science with Python-Full Course', 'https://www.youtube.com/watch?v=nHAPcZRg9VM', 5, 1),
+('Web Development with Python Tutorial – Flask & Dynamic Database-Driven Web Apps', 'https://www.youtube.com/watch?v=yBDHkveJUf4', 6, 1),
+('JavaScript Course for Beginners 2024', 'https://www.youtube.com/watch?v=Zi-Q0t4gMC8', 7, 1),
+('Frontend Web Development Bootcamp Course (JavaScript, HTML, CSS)', 'https://www.youtube.com/watch?v=zJSY8tbf_ys', 8, 1),
+('Node.js and Express.js - Full Course', 'https://www.youtube.com/watch?v=Oe421EPjeBE', 9, 1)
 INSERT INTO Blogs (BlogTitle, BlogDetail, BlogImage, BlogDate, UserID)
 VALUES 
     (N'Bắt đầu học lập trình: Lộ trình cho người mới', 
@@ -326,14 +331,22 @@ INSERT INTO [dbo].[Feedbacks]
 
 		   INSERT INTO Payment (UserID, CourseID, Amount) VALUES 
 (6, 3, 200.00),  -- Java Spring Boot Web Development
-(6, 5, 190.00);  -- Data Science with Python
+(6, 5, 190.00),
+
+(6, 1, 150.00),
+(6, 2, 180.00);
+
+-- Data Science with Python
 -- Giao dịch cho khóa học "Java Spring Boot Web Development"
 INSERT INTO TransactionHistory (PayID, Status, CreatedAt, CourseID, PaymentMethod, PaymentDate) 
 VALUES (1, 1, GETDATE(), 3, N'VNPay', GETDATE());
-
+INSERT INTO TransactionHistory (PayID, Status, CreatedAt, CourseID, PaymentMethod, PaymentDate) 
+VALUES (1, 1, GETDATE(), 5, N'VNPay', GETDATE());
 -- Giao dịch cho khóa học "Data Science with Python"
 INSERT INTO TransactionHistory (PayID, Status, CreatedAt, CourseID, PaymentMethod, PaymentDate) 
-VALUES (2, 1, GETDATE(), 5, N'VNPay', GETDATE());
+VALUES (2, 1, GETDATE(), 1, N'VNPay', GETDATE());
+INSERT INTO TransactionHistory (PayID, Status, CreatedAt, CourseID, PaymentMethod, PaymentDate) 
+VALUES (3, 1, GETDATE(), 2, N'VNPay', GETDATE());
 INSERT INTO [dbo].[Requests]
            ([RequestedRole]
            ,[UserID])
@@ -352,327 +365,50 @@ INSERT INTO [dbo].[Requests]
      VALUES
            (3
            ,6)
-INSERT INTO Answer (IsCorrectAnswer, AnswerContent)  
-VALUES  
-    (1, 'B. extends'),  
-    (0, 'A. implements'),  
-    (0, 'C. inherits'),  
-    (0, 'D. interface'),  
-    (1, 'A. public static void main(String[] args)'),  
-    (0, 'B. static void main(String[] args)'),  
-    (0, 'C. public void main(String[] args)'),  
-    (0, 'D. void main(String args[])'),  
-    (1, 'C. int'),  
-    (0, 'A. String'),  
-    (0, 'B. ArrayList'),  
-    (0, 'D. Integer'),  
-    (1, 'A. Scanner scanner = new Scanner(System.in)'),  
-    (0, 'B. Input input = new Input(System.in)'),  
-    (0, 'C. System.console().readLine()'),  
-    (0, 'D. new Scanner()'),  
-    (1, 'B. Inside a method or block'),  
-    (0, 'A. The entire program'),  
-    (0, 'C. The entire class'),  
-    (0, 'D. Inside a package'),  
-    (1, 'D. All of the above'),  
-    (0, 'A. A variable cannot be changed'),  
-    (0, 'B. A method cannot be overridden'),  
-    (0, 'C. A class cannot be inherited'),  
-    (1, 'C. Abstract methods'),  
-    (0, 'A. Methods with a body'),  
-    (0, 'B. Mutable variables'),  
-    (0, 'D. Constructor'),  
-    (1, 'A. java.util'),  
-    (0, 'B. java.lang'),  
-    (0, 'C. java.io'),  
-    (0, 'D. java.sql'),  
-    (1, 'B. get(int index)'),  
-    (0, 'A. fetch(int index)'),  
-    (0, 'C. retrieve(int index)'),  
-    (0, 'D. find(int index)'),  
-    (1, 'C. new'),  
-    (0, 'A. create'),  
-    (0, 'B. build'),  
-    (0, 'D. instance'),  
-    (1, 'B. false'),  
-    (0, 'A. true'),  
-    (0, 'C. null'),  
-    (0, 'D. 0'),  
-    (1, 'B. Compare the contents of two objects'),  
-    (0, 'A. Compare memory addresses of two objects'),  
-    (0, 'C. Copy an object'),  
-    (0, 'D. Compare two integers'),  
-    (1, 'A. (Dog) animal;'),  
-    (0, 'B. (int) 3.5'),  
-    (0, 'C. Integer.parseInt("123")'),  
-    (0, 'D. String.valueOf(123);'),  
-    (1, 'A. FileReader'),  
-    (0, 'B. FileScanner'),  
-    (0, 'C. FileWriter'),  
-    (0, 'D. FileOutputStream'),  
-    (1, 'A. Exception handling'),  
-    (0, 'B. Defining loops'),  
-    (0, 'C. Ending a program'),  
-    (0, 'D. Initializing variables'),  
-    (1, 'B. Throw an exception'),  
-    (0, 'A. Declare an exception'),  
-    (0, 'C. Handle an exception'),  
-    (0, 'D. Catch an exception'),  
-    (1, 'B. An interface'),  
-    (0, 'A. A class'),  
-    (0, 'C. A package'),  
-    (0, 'D. An annotation'),  
-    (1, 'A. Call the constructor of the parent class'),  
-    (0, 'B. Call a static method'),  
-    (0, 'C. Access a private method'),  
-    (0, 'D. Access a global variable'),  
-    (1, 'A. == compares memory addresses, equals() compares content'),  
-    (0, 'B. Both compare memory addresses'),  
-    (0, 'C. == compares content, equals() compares memory addresses'),  
-    (0, 'D. No difference'),  
-    (1, 'C. break'),  
-    (0, 'B. continue'),  
-    (0, 'A. stop'),  
-    (0, 'D. exit'),  
-    (1, 'D. PrintStream'),  
-    (0, 'A. System'),  
-    (0, 'B. Console'),  
-    (0, 'C. OutputStream'),  
-    (1, 'B. A floating-point number in the range [0,1)'),  
-    (0, 'A. An integer'),  
-    (0, 'C. A floating-point number in the range (0,1]'),  
-    (0, 'D. An integer in the range [0,10]'),  
-    (1, 'B. 32 bits'),  
-    (0, 'A. 16 bits'),  
-    (0, 'C. 64 bits'),  
-    (0, 'D. 8 bits'),  
-    (1, 'C. final'),  
-    (0, 'A. static'),  
-    (0, 'B. private'),  
-    (0, 'D. protected'),  
-    (1, 'B. It will compile but not run'),  
-    (0, 'A. It will compile and run'),  
-    (0, 'C. It will not compile'),  
-    (0, 'D. It will throw an exception'),  
-    (1, 'B. constructor'),  
-    (0, 'A. finalize()'),  
-    (0, 'D. run()'),  
-    (0, 'C. start()'),  
-    (1, 'D. default (no modifier)'),  
-    (0, 'A. public'),  
-    (0, 'B. private'),  
-    (0, 'C. protected'),  
-    (1, 'A. Object'),  
-    (0, 'B. Class'),  
-    (0, 'C. Super'),  
-    (0, 'D. Base'),  
-    (1, 'A. Throws ArithmeticException'),  
-    (0, 'B. Returns Infinity'),  
-    (0, 'C. Returns NaN'),  
-    (0, 'D. Returns 0'),  
-    (1, 'B. super'),  
-    (0, 'A. this'),  
-    (0, 'C. extends'),  
-    (0, 'D. parent');
 
-INSERT INTO Question (QuestionType, QuestionContent, AnswerID)
+INSERT INTO Answer( IsCorrectAnswer, AnswerContent) values (1, 'B'),  (0, 'A'), (0,'C'), (0,'D), (1, 'A'), (0, 'B'), (0,'C), (0, 'D'), (1, 'C'), (0,'A'), (0, 'B'), (0, 'D'), (1,'A'), (0, 'B'), (0, 'C'), (0,'D'), (1, 'B'), (0, 'A'), (0,'C'), (0, 'D. Inside a package'), (1, 'D. All of the above'), (0,'A. A variable cannot be changed'),  (0, 'B. A method cannot be overridden'), (0,'C. A class cannot be inherited'), (1,'C. Abstract methods'), (0, 'A. Methods with a body'), (0, 'B. Mutable variables'), (0,'D. Constructor'), (1, 'A. java.util'), (0, 'B. java.lang'), (0,'C. java.io'), (0, 'D. java.sql'), (1, 'B. get(int index)'), (0,'A. fetch(int index)'), (0, 'C. retrieve(int index)'), (0, 'D. find(int index)'), (1,'C. new'), (0, 'A. create'), (0, 'B. build'), (0,'D. instance'), (1, 'B. false'), (0, 'A. true'), (0,'C. null'), (0,'D. 0'), (1,'B. Compare the contents of two objects'), (0,'A. Compare memory addresses of two objects'), (0, 'C. Copy an object'), (0, 'D. Compare two integers'), (1,'A. (Dog) animal;'), (0, 'B. (int) 3.5'), (0, 'C. Integer.parseInt("123")'), (0,'D. String.valueOf(123);'), (1, 'A. FileReader'), (0, 'B. FileScanner'), (0,'C. FileWriter'), (0, 'D. FileOutputStream'), (1, 'A. Exception handling'), (0,'B. Defining loops'), (0, 'C. Ending a program'), (0, 'D. Initializing variables'), (1,'B. Throw an exception'), (0, 'A. Declare an exception'), (0, 'C. Handle an exception'), (0,'D. Catch an exception'), (1,'B. An interface'), (0,'A. A class'), (0, 'C. A package'), (0, 'D. An annotation'), (1,'A. Call the constructor of the parent class'), (0, 'B. Call a static method'), (0, 'C. Access a private method'), (0,'D. Access a global variable'), (1, 'A. == compares memory addresses, equals() compares content'), (0, 'B. Both compare memory addresses'), (0,'C. == compares content, equals() compares memory addresses'), (0, 'D. No difference'), (1, 'C. break'), (0,'B. continue'), (0, 'A. stop'), (0, 'D. exit'), (1,'D. PrintStream'), (0, 'A. System'), (0, 'B. Console'), (0,'C. OutputStream'), (1,'B. A floating-point number in the range [0,1)'), (0, 'A. An integer'), (0, 'C. A floating-point number in the range (0,1]'), (0,'D. An integer in the range [0,10]'), (1,'B. 32 bits'), (0, 'A. 16 bits'), (0, 'C. 64 bits'), (0,'D. 8 bits'), (1,'C. final'), (0, 'A. static'), (0, 'B. private'), (0,'D. protected'), (1,'B. It will compile but not run'), (0, 'A. It will compile and run'), (0, ' C. It will not compile'), (0,'D. It will throw an exception'), (1,'B. constructor'), (0, 'A. finalize()'), (0, 'D. run()'), (0,'C. start()'), (1,'D. default (no modifier)'), (0, 'A. public'), (0, 'B. private'), (0,'C. protected'), (1,'A. Object'), (0, 'B. Class'), (0, 'C. Super'), (0,'D. Base'), (1,'A. Throws ArithmeticException'), (0, 'B. Returns Infinity'), (0, 'C. Returns NaN'), (0,'D. Returns 0'), (1,'B. super'), (0, 'A. this'), (0, 'C. extends'), (0,'D. parent') 
+
+
+INSERT INTO Question(QuestionType, QuestionContent, OptionA, OptionB, OptionC, OptionD, AnswerID) 
 VALUES 
-('multiple choice', 'Which keyword is used to inherit a class in Java? 
-A. implements 
-B. extends 
-C. inherits 
-D. interface', 1),
+('multiple choice', 'Which keyword is used to inherit a class in Java?', 'A. implements', 'B. extends', 'C. inherits', 'D. interface', 1),
+('multiple choice', 'Which of the following is the correct declaration of the main method in Java?', 'A. public static void main(String[] args)', 'B. static void main(String[] args)', 'C. public void main(String[] args)', 'D. void main(String args[])', 2),
+('multiple choice', 'Which data type is a primitive type in Java?', 'A. String', 'B. ArrayList', 'C. int', 'D. Integer', 3),
+('multiple choice', 'Which statement is used to read input from the keyboard in Java?', 'A. Scanner scanner = new Scanner(System.in);', 'B. Input input = new Input(System.in);', 'C. System.console().readLine();', 'D. new Scanner();', 4),
+('multiple choice', 'What is the scope of a local variable?', 'A. The entire program', 'B. Inside a method or block', 'C. The entire class', 'D. Inside a package', 5),
+('multiple choice', 'What does the final keyword mean in Java?', 'A. A variable cannot be changed', 'B. A method cannot be overridden', 'C. A class cannot be inherited', 'D. All of the above', 6),
+('multiple choice', 'An interface in Java can contain:', 'A. Methods with a body', 'B. Mutable variables', 'C. Abstract methods', 'D. Constructors', 7),
+('multiple choice', 'Which package does the ArrayList class belong to?', 'A. java.util', 'B. java.lang', 'C. java.io', 'D. java.sql', 8),
+('multiple choice', 'Which method of ArrayList is used to retrieve an element by index?', 'A. fetch(int index)', 'B. get(int index)', 'C. retrieve(int index)', 'D. find(int index)',9),
+('multiple choice', 'Which keyword is used to create an object in Java?', 'A. create', 'B. build', 'C. new', 'D. instance', 10),
+('multiple choice', 'What is the default value of a boolean variable in Java?', 'A. true', 'B. false', 'C. null', 'D. 0', 11),
+('multiple choice', 'What is the purpose of the equals() method?', 'A. Compare memory addresses of two objects', 'B. Compare the contents of two objects', 'C. Copy an object', 'D. Compare two integers', 12),
+('multiple choice', 'Which of the following is an example of downcasting?', 'A. (Dog) animal;', 'B. (int) 3.5;', 'C. Integer.parseInt("123");', 'D. String.valueOf(123);', 13),
+('multiple choice', 'Which class is used to read data from a file in Java?', 'A. FileReader', 'B. FileScanner', 'C. FileWriter', 'D. FileOutputStream', 14),
+('multiple choice', 'What is try-catch-finally used for?', 'A. Exception handling', 'B. Defining loops', 'C. Ending a program', 'D. Initializing variables', 15),
+('multiple choice', 'What is the purpose of the throw keyword?', 'A. Declare an exception', 'B. Throw an exception', 'C. Handle an exception', 'D. Catch an exception', 16),
+('multiple choice', 'What is Runnable in Java?', 'A. A class', 'B. An interface', 'C. A package', 'D. An annotation', 17),
+('multiple choice', 'What is the purpose of the super keyword?', 'A. Call the constructor of the parent class', 'B. Call a static method', 'C. Access a private method', 'D. Access a global variable', 18),
+('multiple choice', 'What is the difference between == and equals()?', 'A. == compares memory addresses, equals() compares content', 'B. Both compare memory addresses', 'C. == compares content, equals() compares memory addresses', 'D. No difference', 19),
+('multiple choice', 'Which statement is used to exit a loop?', 'A. stop', 'B. continue', 'C. break', 'D. exit', 20),
+('multiple choice', 'Which class does System.out.println() belong to?', 'A. System', 'B. Console', 'C. OutputStream', 'D. PrintStream', 21),
+('multiple choice', 'What does Math.random() return?', 'A. An integer', 'B. A floating-point number in the range [0,1)', 'C. A floating-point number in the range (0,1]', 'D. An integer in the range [0,10]', 22),
+('multiple choice', 'What is the size of an int variable in Java?', 'A. 16 bits', 'B. 32 bits', 'C. 64 bits', 'D. 8 bits', 23),
+('multiple choice', 'Which keyword is used to prevent a method from being overridden?', 'A. static', 'B. private', 'C. final', 'D. protected', 24),
+('multiple choice', 'What will happen if we try to execute a program without a main method in Java?', 'A. It will compile and run', 'B. It will compile but not run', 'C. It will not compile', 'D. It will throw an exception', 25),
+('multiple choice', 'Which method is called automatically when an object is created?', 'A. finalize()', 'B. constructor', 'C. start()', 'D. run()', 26),
+('multiple choice', 'Which access modifier allows a variable to be accessed only within the same package?', 'A. public', 'B. private', 'C. protected', 'D. default (no modifier)', 27),
+('multiple choice', 'What is the parent class of all classes in Java?', 'A. Object', 'B. Class', 'C. Super', 'D. Base', 28),
+('multiple choice', 'What happens when you divide an integer by zero in Java?', 'A. Throws ArithmeticException', 'B. Returns Infinity', 'C. Returns NaN', 'D. Returns 0', 29),
+('multiple choice', 'Which keyword is used to call the constructor of the parent class?', 'A. this', 'B. super', 'C. extends', 'D. parent', 30);
 
-('multiple choice', 'Which of the following is the correct declaration of the main method in Java? 
-A. public static void main(String[] args) 
-B. static void main(String[] args) 
-C. public void main(String[] args) 
-D. void main(String args[])', 5),
 
-('multiple choice', 'Which data type is a primitive type in Java? 
-A. String 
-B. ArrayList 
-C. int 
-D. Integer', 9),
-
-('multiple choice', 'Which statement is used to read input from the keyboard in Java? 
-A. Scanner scanner = new Scanner(System.in); 
-B. Input input = new Input(System.in); 
-C. System.console().readLine(); 
-D. new Scanner();', 13),
-
-('multiple choice', 'What is the scope of a local variable? 
-A. The entire program 
-B. Inside a method or block 
-C. The entire class 
-D. Inside a package', 17),
-
-('multiple choice', 'What does the final keyword mean in Java? 
-A. A variable cannot be changed 
-B. A method cannot be overridden 
-C. A class cannot be inherited 
-D. All of the above', 21),
-
-('multiple choice', 'An interface in Java can contain: 
-A. Methods with a body 
-B. Mutable variables 
-C. Abstract methods 
-D. Constructors', 25),
-
-('multiple choice', 'Which package does the ArrayList class belong to? 
-A. java.util 
-B. java.lang 
-C. java.io 
-D. java.sql', 29),
-
-('multiple choice', 'Which method of ArrayList is used to retrieve an element by index? 
-A. fetch(int index) 
-B. get(int index) 
-C. retrieve(int index) 
-D. find(int index)', 33),
-
-('multiple choice', 'Which keyword is used to create an object in Java? 
-A. create 
-B. build 
-C. new 
-D. instance', 37),
-
-('multiple choice', 'What is the default value of a boolean variable in Java? 
-A. true 
-B. false 
-C. null 
-D. 0', 41),
-
-('multiple choice', 'What is the purpose of the equals() method? 
-A. Compare memory addresses of two objects 
-B. Compare the contents of two objects 
-C. Copy an object 
-D. Compare two integers', 45),
-
-('multiple choice', 'Which of the following is an example of downcasting? 
-A. (Dog) animal; 
-B. (int) 3.5; 
-C. Integer.parseInt("123"); 
-D. String.valueOf(123);', 49),
-
-('multiple choice', 'Which class is used to read data from a file in Java? 
-A. FileReader 
-B. FileScanner 
-C. FileWriter 
-D. FileOutputStream', 53),
-
-('multiple choice', 'What is try-catch-finally used for? 
-A. Exception handling 
-B. Defining loops 
-C. Ending a program 
-D. Initializing variables', 57),
-
-('multiple choice', 'What is the purpose of the throw keyword? 
-A. Declare an exception 
-B. Throw an exception 
-C. Handle an exception 
-D. Catch an exception', 61),
-
-('multiple choice', 'What is Runnable in Java? 
-A. A class 
-B. An interface 
-C. A package 
-D. An annotation', 65),
-
-('multiple choice', 'What is the purpose of the super keyword? 
-A. Call the constructor of the parent class 
-B. Call a static method 
-C. Access a private method 
-D. Access a global variable', 69),
-
-('multiple choice', 'What is the difference between == and equals()? 
-A. == compares memory addresses, equals() compares content 
-B. Both compare memory addresses 
-C. == compares content, equals() compares memory addresses 
-D. No difference', 73),
-
-('multiple choice', 'Which statement is used to exit a loop? 
-A. stop 
-B. continue 
-C. break 
-D. exit', 77),
-
-('multiple choice', 'Which class does System.out.println() belong to? 
-A. System 
-B. Console 
-C. OutputStream 
-D. PrintStream', 81),
-
-('multiple choice', 'What does Math.random() return? 
-A. An integer 
-B. A floating-point number in the range [0,1) 
-C. A floating-point number in the range (0,1] 
-D. An integer in the range [0,10]', 85),
-
-('multiple choice', 'What is the size of an int variable in Java? 
-A. 16 bits 
-B. 32 bits 
-C. 64 bits 
-D. 8 bits', 89),
-
-('multiple choice', 'Which keyword is used to prevent a method from being overridden? 
-A. static 
-B. private 
-C. final 
-D. protected', 93),
-
-('multiple choice', 'What will happen if we try to execute a program without a main method in Java? 
-A. It will compile and run 
-B. It will compile but not run 
-C. It will not compile 
-D. It will throw an exception', 97),
-
-('multiple choice', 'Which method is called automatically when an object is created? 
-A. finalize() 
-B. constructor 
-C. start() 
-D. run()', 101),
-
-('multiple choice', 'Which access modifier allows a variable to be accessed only within the same package? 
-A. public 
-B. private 
-C. protected 
-D. default (no modifier)', 105),
-
-('multiple choice', 'What is the parent class of all classes in Java? 
-A. Object 
-B. Class 
-C. Super 
-D. Base', 109),
-
-('multiple choice', 'What happens when you divide an integer by zero in Java? 
-A. Throws ArithmeticException 
-B. Returns Infinity 
-C. Returns NaN 
-D. Returns 0', 113),
-
-('multiple choice', 'Which keyword is used to call the constructor of the parent class? 
-A. this 
-B. super 
-C. extends 
-D. parent', 117);
 
 INSERT INTO [dbo].[Test] ([Name], [Status], [CreatedBy], [TotalMark], [CourseID]) 
 VALUES ('Test 1', 0, 'Hoang Cong Ninh', 0, 1);
 
+select * from Answer
 
-INSERT INTO [dbo].[Test]
-           ([Name]
-           ,[Status]
-           ,[CreatedBy]
-           ,[TotalMark]
-           ,[CourseID])
-     VALUES
-           ('Test 1'
-           ,0
-           ,'Hoang Cong Ninh'
-           ,0
-           ,1)
 
 
 INSERT INTO [dbo].[Test_Question]
@@ -862,10 +598,30 @@ INSERT INTO [dbo].[Enrollments]
            ,[EnrolledAt])
      VALUES
            (6
-           ,1
+           ,3
            ,1
            ,GETDATE())
 INSERT INTO [dbo].[Enrollments]
+           ([UserID]
+           ,[CourseID]
+           ,[Status]
+           ,[EnrolledAt])
+     VALUES
+           (6
+           ,5
+           ,1
+           ,GETDATE());
+		   INSERT INTO [dbo].[Enrollments]
+           ([UserID]
+           ,[CourseID]
+           ,[Status]
+           ,[EnrolledAt])
+     VALUES
+           (6
+           ,1
+           ,1
+           ,GETDATE());
+		   	   INSERT INTO [dbo].[Enrollments]
            ([UserID]
            ,[CourseID]
            ,[Status]
@@ -874,16 +630,4 @@ INSERT INTO [dbo].[Enrollments]
            (6
            ,2
            ,1
-           ,GETDATE())
-INSERT INTO [dbo].[Enrollments]
-           ([UserID]
-           ,[CourseID]
-           ,[Status]
-           ,[EnrolledAt])
-     VALUES
-           (6
-           ,3
-           ,1
-           ,GETDATE())
-
-
+           ,GETDATE());

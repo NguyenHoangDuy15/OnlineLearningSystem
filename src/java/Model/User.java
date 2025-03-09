@@ -15,6 +15,12 @@ public class User {
     public User() {
     }
 
+    public User(int UserID, int Status, int RoleID) {
+        this.UserID = UserID;
+        this.Status = Status;
+        this.RoleID = RoleID;
+    }
+
     public User(int UserID, String FullName, String UserName, String Email, String Password, int Status, int RoleID) {
         this.UserID = UserID;
         this.FullName = FullName;

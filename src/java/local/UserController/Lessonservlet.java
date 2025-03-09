@@ -4,56 +4,47 @@
  */
 package local.UserController;
 
-import Model.User;
-import dal.FeedbackDao;
+import Model.Lesson;
+
+import dal.LessonsDao;
 import java.io.IOException;
-import Model.Feedback;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
-import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author Administrator
  */
-public class Feedbackcontroller extends HttpServlet {
-
-  @Override
-protected void doGet(HttpServletRequest request, HttpServletResponse response)
+public class Lessonservlet extends HttpServlet {
+@Override
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
+    
     HttpSession session = request.getSession();
-    Integer userId = (Integer) session.getAttribute("userid");
-
+     Integer userId = (Integer) session.getAttribute("userid");
     if (userId == null) {
-        response.sendRedirect("LogoutServlet");
+        response.sendRedirect("LogoutServlet"); 
         return;
     }
-    
-    
-    int courseId = Integer.parseInt(request.getParameter("courseId"));
-    int rating = Integer.parseInt(request.getParameter("rating"));
-    String comment = request.getParameter("comment");
 
-    Feedback feedback = new Feedback(userId, courseId, rating, comment);
+ 
+    int courseId = Integer.parseInt(request.getParameter("courseId"));
+
+   
+    LessonsDao lessonDAO = new LessonsDao();
+    List<Lesson> lessonsAndTests = lessonDAO.getLessonsAndTests(courseId, userId);
 
   
-    FeedbackDao feedbackDAO = new FeedbackDao();
+    request.setAttribute("lessonsAndTests", lessonsAndTests);
 
-    boolean success = feedbackDAO.insertFeedback(feedback);
-
-    if (success) {
-        session.setAttribute("message", "Gửi phản hồi thành công!");
-    } else {
-        session.setAttribute("message", "Gửi phản hồi thất bại!");
-    }
-    
-    response.sendRedirect("index");
+   
+     request.getRequestDispatcher("jsp/lessons.jsp").forward(request, response);
 }
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -61,4 +52,5 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
 
     }
 
+   
 }

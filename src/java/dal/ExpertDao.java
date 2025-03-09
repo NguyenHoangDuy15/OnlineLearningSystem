@@ -9,18 +9,20 @@ import Model.Expert;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
+
 /**
  *
  * @author Administrator
  */
-public class ExpertDao extends DBContext{
+public class ExpertDao extends DBContext {
+    
    public List<Expert> getAllInstructorCourses() {
         List<Expert> list = new ArrayList<>();
-        String sql = "SELECT u.FullName AS username, c.Name AS name " +
+        String sql = "SELECT u.FullName AS username, c.Name AS course_name, u.Avartar " +
                      "FROM Users u " +
                      "JOIN Courses c ON u.UserID = c.UserID " +
                      "JOIN Roles r ON u.RoleID = r.RoleID " +
-                     "WHERE r.RoleID = 2"; // RoleID = 2 là giảng viên
+                     "WHERE r.RoleID = 2;"; // RoleID = 2 là giảng viên
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -28,7 +30,8 @@ public class ExpertDao extends DBContext{
             while (rs.next()) {
                 list.add(new Expert(
                         rs.getString("username"),
-                        rs.getString("name")
+                        rs.getString("course_name"),
+                        rs.getString("Avartar")
                 ));
             }
         } catch (Exception e) {
@@ -38,13 +41,14 @@ public class ExpertDao extends DBContext{
     }
 
     public static void main(String[] args) {
-        ExpertDao expertDao = new ExpertDao();
-            List<Expert> experts = expertDao.getAllInstructorCourses();
+         ExpertDao expertDAO = new ExpertDao();
+        List<Expert> experts = expertDAO.getAllInstructorCourses();
 
-            // Hiển thị kết quả
-            for (Expert ex : experts) {
-                System.out.println("Giảng viên: " + ex.getUsername() + " - Khóa học: " + ex.getName());
-            }
+        // Hiển thị danh sách giảng viên và khóa học của họ
+        for (Expert expert : experts) {
+            System.out.println("Giảng viên: " + expert.getUsername() +
+                               ", Khóa học: " + expert.getCourseName() +
+                               ", Avatar: " + expert.getAvatar());
+        }
     }
-   
 }

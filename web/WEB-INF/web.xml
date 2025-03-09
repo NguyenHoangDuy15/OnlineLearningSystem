@@ -21,16 +21,8 @@
         <servlet-class>local.UserController.course</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>team</servlet-name>
-        <servlet-class>local.UserController.team</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>detail</servlet-name>
         <servlet-class>local.UserController.detail</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>feature</servlet-name>
-        <servlet-class>local.UserController.feature</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>category</servlet-name>
@@ -43,6 +35,18 @@
     <servlet>
         <servlet-name>Myenrollment</servlet-name>
         <servlet-class>local.UserController.Myenrollment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Historytransaction</servlet-name>
+        <servlet-class>local.UserController.Historytransaction</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Lessons</servlet-name>
+        <servlet-class>local.UserController.Lessonservlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Test</servlet-name>
+        <servlet-class>local.UserController.Test</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ForgotPassword</servlet-name>
@@ -73,16 +77,8 @@
         <url-pattern>/course</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>team</servlet-name>
-        <url-pattern>/team</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>detail</servlet-name>
         <url-pattern>/detail</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>feature</servlet-name>
-        <url-pattern>/feature</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>category</servlet-name>
@@ -119,5 +115,17 @@
     <servlet-mapping>
         <servlet-name>Myenrollment</servlet-name>
         <url-pattern>/myenrollment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Historytransaction</servlet-name>
+        <url-pattern>/historytransaction</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Lessons</servlet-name>
+        <url-pattern>/Lessonservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Test</servlet-name>
+        <url-pattern>/test</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -5,18 +5,22 @@
 
 package local.UserController;
 
+import Model.Transaction;
+import dal.TransactionDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  *
  * @author Administrator
  */
-public class feature extends HttpServlet {
+public class Historytransaction extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -33,10 +37,10 @@ public class feature extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet feature</title>");  
+            out.println("<title>Servlet Historytransaction</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet feature at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet Historytransaction at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -53,7 +57,19 @@ public class feature extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-       request.getRequestDispatcher("jsp/feature.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        Integer userId = (Integer) session.getAttribute("userid");
+
+        if (userId == null) {
+            response.sendRedirect("jsp/login.jsp");
+            return;
+        }
+        TransactionDAO dao = new TransactionDAO();
+            List<Transaction> historyList = dao.getTransactionHistoryByUserId(userId);
+
+            request.setAttribute("historyList", historyList);
+           
+       request.getRequestDispatcher("jsp/historytransaction.jsp").forward(request, response);
     } 
 
     /** 

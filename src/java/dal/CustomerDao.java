@@ -17,25 +17,29 @@ public class CustomerDao extends DBContext {
 
     public List<CustomerCourse> getAllCourses() {
         List<CustomerCourse> courses = new ArrayList<>();
-        String sql = "SELECT \n"
-                + "    c.CourseID, \n"
-                + "    c.Name AS CourseName, \n"
-                + "    c.Description, \n"
-                + "    c.Price, \n"
-                + "    u.FullName AS Instructor\n"
-                + "FROM Courses c\n"
-                + "INNER JOIN Users u ON c.UserID = u.UserID\n"
-                + "INNER JOIN Roles r ON u.RoleID = r.RoleID\n"
-                + "WHERE r.RoleName = N'Expert'";
+        String sql = "SELECT "
+                + "c.CourseID, "
+                + "c.Name AS CourseName, "
+                + "c.imageCources, "
+                + "u.FullName AS ExpertName, "
+                + "c.Price, "
+                + "COALESCE(AVG(f.Rating), 0) AS AverageRating, "
+                + "COUNT(f.Rating) AS TotalReviews "
+                + "FROM Courses c "
+                + "INNER JOIN Users u ON c.UserID = u.UserID "
+                + "LEFT JOIN Feedbacks f ON c.CourseID = f.CourseID "
+                + "GROUP BY c.CourseID, c.Name, c.imageCources, u.FullName, c.Price;";
 
-        try (PreparedStatement ps = connection.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 courses.add(new CustomerCourse(
                         rs.getInt("CourseID"),
                         rs.getString("CourseName"),
-                        rs.getString("Description"),
                         rs.getFloat("Price"),
-                        rs.getString("Instructor")
+                        rs.getString("ExpertName"),
+                        rs.getString("imageCources")// Đổi Instructor thành ExpertName
                 ));
             }
         } catch (SQLException e) {
@@ -45,16 +49,20 @@ public class CustomerDao extends DBContext {
     }
 
     public static void main(String[] args) {
-        CustomerDao customerDao = new CustomerDao();
-        List<CustomerCourse> courses = customerDao.getAllCourses();
+        // Tạo danh sách giả lập dữ liệu
+        List<CustomerCourse> courses = new ArrayList<>();
+        courses.add(new CustomerCourse(1, "Java Basics", 99.99f, "John Doe", "java.jpg"));
+        courses.add(new CustomerCourse(2, "Python for Beginners", 79.99f, "Alice Smith", "python.jpg"));
+        courses.add(new CustomerCourse(3, "Web Development", 119.99f, "Bob Johnson", "web.jpg"));
 
-        System.out.println("Danh sách khóa học của Expert:");
+        // In danh sách khóa học ra màn hình
         for (CustomerCourse course : courses) {
-            System.out.println("ID: " + course.getCourseId()
-                    + ", Tên: " + course.getCourseName()
-                    + ", Mô tả: " + course.getDescription()
-                    + ", Giá: " + course.getPrice()
-                    + ", Hướng dẫn: " + course.getInstructor());
+            System.out.println("ID: " + course.getCourseId());
+            System.out.println("Tên: " + course.getCourseName());
+            System.out.println("Giá: " + course.getPrice());
+            System.out.println("Chuyên gia: " + course.getInstructor());
+            System.out.println("Ảnh: " + course.getImage());
+            System.out.println("--------------------------");
         }
     }
 }
