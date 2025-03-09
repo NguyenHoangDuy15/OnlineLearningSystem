@@ -3,13 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/swp/OnlineLearningSystem/web/jsp/viewownerbloglist.jsp</file>
-            <file>file:/D:/swp/OnlineLearningSystem/web/WEB-INF/web.xml</file>
-            <file>file:/D:/swp/OnlineLearningSystem/src/java/local/SaleController/ViewOwnerBlogList.java</file>
-            <file>file:/D:/swp/OnlineLearningSystem/src/java/local/UserController/LoginServlet.java</file>
-            <file>file:/D:/swp/OnlineLearningSystem/src/java/dal/BlogDAO.java</file>
-            <file>file:/D:/swp/OnlineLearningSystem/web/jsp/header.jsp</file>
-            <file>file:/D:/swp/OnlineLearningSystem/src/java/local/SaleController/ViewBlog.java</file>
+            <file>file:/E:/MainSwp/LearningOnlineSystem/src/java/local/AdminController/ListOfFeedbackByAdminServlet.java</file>
+            <file>file:/E:/MainSwp/LearningOnlineSystem/web/jsp/ListOfFeedbackByAdmin.jsp</file>
+            <file>file:/E:/MainSwp/LearningOnlineSystem/web/jsp/ListOfExpert.jsp</file>
+            <file>file:/E:/MainSwp/LearningOnlineSystem/src/java/dal/FeedbackDao.java</file>
+            <file>file:/E:/MainSwp/LearningOnlineSystem/web/jsp/ListOfSeller.jsp</file>
+            <file>file:/E:/MainSwp/LearningOnlineSystem/src/java/Model/FeedbackPrint.java</file>
+            <file>file:/E:/MainSwp/LearningOnlineSystem/src/java/local/AdminController/ListOfExpertServlet.java</file>
+            <file>file:/E:/MainSwp/LearningOnlineSystem/src/java/dal/UserDAO.java</file>
+            <file>file:/E:/MainSwp/LearningOnlineSystem/web/jsp/sidebarManager.jsp</file>
         </group>
     </open-files>
 </project-private>

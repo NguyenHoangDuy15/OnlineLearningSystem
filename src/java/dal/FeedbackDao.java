@@ -6,6 +6,7 @@ package dal;
 
 import java.sql.*;
 import Model.Feedback;
+import Model.FeedbackPrint;
 import Model.User;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -42,8 +43,37 @@ public class FeedbackDao extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Feedback f = new Feedback(rs.getInt("FeedbackID"), rs.getInt("UserID"), rs.getInt("Rating")
-                        ,rs.getString("Comment"), rs.getDate("CreatedAt"));
+                Feedback f = new Feedback(rs.getInt("FeedbackID"), rs.getInt("UserID"), rs.getInt("Rating"),
+                        rs.getString("Comment"), rs.getDate("CreatedAt"));
+                list.add(f);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public List<FeedbackPrint> getAllFeedbackForAdmin(int index) {
+        List<FeedbackPrint> list = new ArrayList<>();
+        String sql = "SELECT \n"
+                + "    f.FeedbackID AS FbID, \n"
+                + "    u.UserName AS Username, \n"
+                + "    c.Name AS CourseName, \n"
+                + "    f.Rating, \n"
+                + "    f.Comment, \n"
+                + "    f.CreatedAt\n"
+                + "FROM Feedbacks f\n"
+                + "JOIN Users u ON f.UserID = u.UserID\n"
+                + "JOIN Courses c ON f.CourseID = c.CourseID\n"
+                + "ORDER BY c.CourseID \n"
+                + "OFFSET ? ROWS FETCH NEXT 5 ROWS ONLY";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, index);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                FeedbackPrint f = new FeedbackPrint(rs.getInt("FbID"), rs.getString("Username"), rs.getString("CourseName"),
+                         rs.getInt("Rating"), rs.getString("Comment"), rs.getDate("CreatedAt"));
                 list.add(f);
             }
         } catch (SQLException e) {
@@ -79,7 +109,7 @@ public class FeedbackDao extends DBContext {
     public static void main(String[] args) {
         // Tạo đối tượng DAL để gọi hàm
         FeedbackDao feedbackDAO = new FeedbackDao();
-
+        System.out.println(feedbackDAO.getAllFeedbackForAdmin(1));
         // Gọi hàm lấy phản hồi của customer
         List<Feedback> feedbacks = feedbackDAO.getCustomerFeedbacks();
 

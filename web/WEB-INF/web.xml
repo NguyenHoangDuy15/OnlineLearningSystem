@@ -48,6 +48,26 @@
         <servlet-name>ShowAdminDasboardServlet</servlet-name>
         <servlet-class>local.AdminController.ShowAdminDasboardServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddNewUserServlet</servlet-name>
+        <servlet-class>local.AdminController.AddNewUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListOfExpertServlet</servlet-name>
+        <servlet-class>local.AdminController.ListOfExpertServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListOfSellerServlet</servlet-name>
+        <servlet-class>local.AdminController.ListOfSellerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListOfFeedbackByAdminServlet</servlet-name>
+        <servlet-class>local.AdminController.ListOfFeedbackByAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteUserByAdminServlet</servlet-name>
+        <servlet-class>local.AdminController.DeleteUserByAdminServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ForgotPassword</servlet-name>
         <url-pattern>/ForgotPassword</url-pattern>
@@ -127,5 +147,25 @@
     <servlet-mapping>
         <servlet-name>ShowAdminDasboardServlet</servlet-name>
         <url-pattern>/ShowAdminDasboardServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNewUserServlet</servlet-name>
+        <url-pattern>/AddNewUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListOfExpertServlet</servlet-name>
+        <url-pattern>/ListOfExpertServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListOfSellerServlet</servlet-name>
+        <url-pattern>/ListOfSellerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListOfFeedbackByAdminServlet</servlet-name>
+        <url-pattern>/ListOfFeedbackByAdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteUserByAdminServlet</servlet-name>
+        <url-pattern>/DeleteUserByAdminServlet</url-pattern>
     </servlet-mapping>
 </web-app>
