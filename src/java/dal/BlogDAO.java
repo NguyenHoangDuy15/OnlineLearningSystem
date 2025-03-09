@@ -5,6 +5,7 @@ package dal;
  * @author DELL
  */
 import Model.Blog;
+import Model.BlogPrint;
 import Model.User;
 import java.util.*;
 import java.lang.*;
@@ -60,6 +61,8 @@ public class BlogDAO extends DBContext {
             e.printStackTrace();
         }
     }
+    
+    
 
     // 3.Edit Blog
     public void editBlog(int blogID, String title, String detail, String image, int userID) {
@@ -235,6 +238,35 @@ public class BlogDAO extends DBContext {
             e.printStackTrace();
             System.out.println("SQL State: " + e.getSQLState());
             System.out.println("Error Code: " + e.getErrorCode());
+        }
+        return list;
+    }
+
+    public List<BlogPrint> get5Blogs() {
+        List<BlogPrint> list = new ArrayList<>();
+        String sql = "SELECT \n"
+                + "    b.BlogID, \n"
+                + "    b.BlogTitle, \n"
+                + "    b.BlogDate, \n"
+                + "    u.UserID, \n"
+                + "    u.UserName\n"
+                + "FROM Blogs b\n"
+                + "JOIN Users u ON b.UserID = u.UserID\n"
+                + "ORDER BY [UserID] OFFSET 0 ROWS FETCH NEXT 5 ROWS ONLY";
+
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                BlogPrint b = new BlogPrint(rs.getInt("BlogID"),
+                        rs.getString("BlogTitle"),
+                        rs.getDate("BlogDate"),
+                        rs.getInt("UserID"),
+                        rs.getString("UserName"));
+                list.add(b);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
         }
         return list;
     }

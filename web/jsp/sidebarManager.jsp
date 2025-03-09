@@ -116,7 +116,7 @@
                             <div class="collapse" id="forms">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="listAmenity">
+                                        <a href="ListBlogByAdminServlet">
                                             <span class="sub-item">List Blog</span>
                                         </a>
                                     </li>
